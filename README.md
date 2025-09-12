@@ -12,7 +12,8 @@ _pip install -r requirements.txt_
 
 1. Start the Redis server:
 _redis-server_
-2. Run the agent:
+2. Create _.env_ file and paste your API key there. (Options: OPENAI_API_KEY for GPT o3 mini,OPENROUTER_API_KEY for Gemini 2.5 Flash or CLAUDE_API_KEY for Claude Sonnet 4)
+3. Run the agent:
 _python run_agent.py_
 
 
