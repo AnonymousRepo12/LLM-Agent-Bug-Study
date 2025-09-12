@@ -1,6 +1,6 @@
 # LLM Agent Bug Study
 
-All datasets used in this project are stored in the [DB](https://github.com/AnonymousRepo12/LLM-Agent-Bug-Study/tree/main/DB) folder.
+All datasets used in this project are stored in the [Dataset](https://github.com/AnonymousRepo12/LLM-Agent-Bug-Study/tree/main/Dataset) folder.
 
 ## Installation
 
