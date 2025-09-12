@@ -1,0 +1,236 @@
+URL,Bug Type,Language,Component,Root Cause,Effect,Framework,Rational
+https://github.com/OpenGVLab/Ask-Anything/issues/231,Availability Bug (AVB),Python,Tools,API Limitation (AL),Unknown (UN),Langchain,"BT:  Model not available in the provided link
+RC:  API link is not working
+ET: Says links are down. No details provided. "
+https://github.com/cognizant-ai-lab/neuro-san-studio/issues/168,Logic Bug (LB),Python,Tools,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Crash (CR),Langchain,"BT: File path incorrectly formatted
+RC: Incorrectly implemented the file path format
+ET:  Throws FileNotFoundError"
+https://github.com/intel/ipex-llm/issues/9065,Prompting Bug (PPB),Python,Unknown,API Misuse-Invalid API Arguments (AM.IAA),Warning (WR),Langchain,"BT: Passed prompt with higher langth
+RC: Prompt vaiable got unexpected length input
+ET: Throws Warning: expect poor results"
+https://github.com/intel/ipex-llm/issues/10360,Availability Bug (AVB),Python,Other,API Limitation (AL),Crash (CR),Langchain,"BT: We currently do not support the use of f16 and Yuan2 gguf model, and are trying to support it.
+RC: Asked for an unsupported model
+ET: Throws RuntimeError: Unsupported gguf quantize type: 1"
+https://github.com/intel/ipex-llm/issues/12087,Resource Limitation Bug (RLB),Python,Unknown,Others,Crash (CR),Langchain,"BT: Didn't reproduce this error. 
+RC: The issue was not reproduced, indicating problems in the user system
+ET: Throws aysncio.exceptions.CancelledError"
+https://github.com/aws-solutions-library-samples/guidance-for-natural-language-queries-of-relational-databases-on-aws/issues/30,Logic Bug (LB),Python,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Crash (CR),Langchain,"BT: Incorrect path provided
+RC: Formatted string had bugs
+ET:  Throws FileNotFoundError
+ER: avatar=f""{BASE_AVATAR_URL}/bot-64px.png"",
+ https://github.com/aws-solutions-library-samples/guidance-for-natural-language-queries-of-relational-databases-on-aws/pull/31/commits/46743580c036f1b16d2ac633d558749cab6b9c9c"
+https://github.com/intel/ipex-llm/issues/11797,Argument Bug (AB),Python,Unknown,API Misuse-Invalid API Arguments (AM.IAA),Crash (CR),Langchain,"BT: I believe this is because of you pass a tokenizer instance to where the arg expects a MiniCPMVImageProcessor instance in chat.
+RC: Incorrectly invoked API with wrong parameter 
+ET: Throws AttributeError"
+https://github.com/intel/ipex-llm/issues/12184,Resource Limitation Bug (RLB),Python,Unknown,Others,Crash (CR),Langchain,"BT: I have checked, and the Intel Xeon E5-2620 v3 does not support AVX-512 or AMX. My PC’s Intel Core i7-12700H also does not support AVX-512 or AMX.
+RC: The issue is in the user's end
+ET: Illegal Instruction (Core Dumped) "
+https://github.com/intel/ipex-llm/issues/11159,Resource Limitation Bug (RLB),Python,Unknown,Others,Crash (CR),Langchain,"BT: No speprate env created for installation. 
+RC:  Issue in the user's end
+ET: Throws no matching distribution found"
+https://github.com/kyegomez/swarms/issues/367,Configuration Bug (CB),Python,Tools,Incorrect or Missing Parameter Value-Incorrect Value (IMP.IV),Incorrect Output (IO),Langchain,"BT: RecursiveCharacterTextSplitter configured incorrectly
+RC: chunk_overlap and separators got incorrect parameters 
+ET: Created chunk size higher than the specified size"
+https://github.com/argilla-io/argilla/issues/5718,Logic Bug (LB),Python,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Incorrect Output (IO),Langchain,"BT: _Iterator class and  __getitem__ method had some implementation error
+RC: Incorrect return statement returned object instead of reult
+ET: Returned one instance instead of three
+ER: return self._from_model(model).get()
+https://github.com/argilla-io/argilla/pull/5753/commits/9e7d2555642ac54d62bdd10d38cee5bf577a0cf6"
+https://github.com/argilla-io/argilla/issues/5570,API Bug (APIB),Python,Tools,Requirement Violation (RV),Crash (CR),Langchain,"BT: I didn't know I had to pull the latest docker image, after doing that it now works.
+RC: Did not use the latest image.
+ET: Throws HTTPStatusError"
+https://github.com/OpenGVLab/Ask-Anything/issues/190,API Bug (APIB),Python,Agent Core,Requirement Violation (RV),Silent Fail (SF),Langchain,"BT: Using the correct version of packages solved all the errors mentioned above.
+RC: Version of peft and transformers was updated on the user's machine
+ET: The loss is nan instead of a number"
+https://github.com/intel/ipex-llm/issues/13038,API Bug (APIB),Python,Tools,API Limitation (AL),Crash (CR),Langchain,"BT: we are upgrading ipex-llm ollama into v0.6.x, and gemma3 will be supported then.
+RC:  Requested for an unsupported model
+ET: Unclear from the log"
+https://github.com/intel/ipex-llm/issues/10845,API Bug (APIB),Python,Unknown,Requirement Violation (RV),Crash (CR),Langchain,"BT: DO NOT USE pip to install oneapi 
+RC: Incorrectly installed oneai API 
+ET: Throws ValueError"
+https://github.com/activeloopai/deeplake/issues/1546,Logic Bug (LB),Python,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Crash (CR),Langchain,"BT: Image reading logic does not cover all senarios
+RC: Previous code of image reading assues the image is always from local directory
+ET: Throws File not found error
+ER: if self.path.startswith(""http""):
+                        img = Image.open(urlopen(self.path))
+                    else:
+                        img = Image.open(self.path)
+https://github.com/activeloopai/deeplake/pull/1586/commits/24719b369e2cbcd360f2a0b22b5153976f16623a"
+https://github.com/refuel-ai/autolabel/issues/440,API Bug (APIB),Python,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Crash (CR),Langchain,"BT: read_file no longer exists in the DatasetLoader
+RC: read_file controll flow not updated when DatasetLoader was changed
+ET: Throws AttributeError
+ER:
+seed_loader = DatasetLoader(seed_examples, self.config)
+            seed_examples = seed_loader.inputs
+https://github.com/refuel-ai/autolabel/pull/441/commits/b3173249a7f011d32637f3826897262b4cf39331"
+https://github.com/ChuloAI/BrainChulo/issues/16,Logic Bug (LB),Python,Unknown,API Misuse-Wrong API Context (AM.WAC),Crash (CR),Langchain,"BT: Incorrect module used for text splitting
+RC: Used CharacterTextSplitter instead of RecursiveCharacterTextSplitter that failed to process large input
+ET: Throws ValueError
+ER: self.text_splitter = RecursiveCharacterTextSplitter(
+            chunk_size=600, chunk_overlap=20, length_function=len)
+https://github.com/ChuloAI/BrainChulo/pull/17/commits/6ebdfd9168306cfbe4a7809b510f0dbc671944e1"
+https://github.com/kyegomez/swarms/issues/623,API Bug (APIB),Python,Unknown,Requirement Violation (RV),Crash (CR),Langchain,"BT: Required API not installed
+RC: swarms package not installed 
+ET: Throws No module name 'uvloop'"
+https://github.com/shroominic/codeinterpreter-api/issues/60,API Bug (APIB),Python,Unknown,Requirement Violation (RV),Indeterminate Loop (IL),Langchain,"BT: Old package used
+RC: Package not used to the latest version
+ET: Loop runs infinitely"
+https://github.com/grll/mcpadapt/issues/6,Logic Bug (LB),Python,Unknown,Incorrect or Missing Control Flow-Missing Flow (IMCF.MF),Crash (CR),Langchain,"BT: Some logical component (checkers) not implemented
+RC: _sanitize_function_name and some minor controll flow  not implemented
+ET: Generated function name violates rules for python function name"
+https://github.com/MIDORIBIN/langchain-gpt4free/issues/3,Resource Limitation Bug (RLB),Python,Unknown,API Limitation (AL),Crash (CR),Langchain,"BT: My guess is that the Aichat rate limit is the cause of the error
+RC: Hit the rate limit
+ET: Throws KeyError"
+https://github.com/intel/ipex-llm/issues/12549,API Bug (APIB),Python,Unknown,Requirement Violation (RV),Crash (CR),Langchain,"BT: Used old version with issues
+RC: Latest version fixed the issue
+ET: Throws PI_ERROR_BUILD_PROGRAM_FAILURE"
+https://github.com/ag2ai/fastagency/issues/690,Logic Bug (LB),Python,Unknown,Incorrect or Missing Control Flow-Missing Flow (IMCF.MF),Crash (CR),Autogen,"BT:  Asynchronous process handled in traditional way
+RC: async_process not implemented for asynchronous operation
+ET:  Throws TyepError"
+https://github.com/Insight-Services-APAC/ingenious/issues/112,Logic Bug (LB),Python,Tools,Incorrect or Missing Control Flow-Missing Flow (IMCF.MF),Crash (CR),Autogen,"BT:  Logical checker not added
+RC: Missing code flow to check if the file exists
+ET: Throws FileNotFoundError"
+https://github.com/Insight-Services-APAC/ingenious/issues/119,Logic Bug (LB),Python,Tools,Incorrect or Missing Control Flow-Missing Flow (IMCF.MF),Slow Output (SO),Autogen,"BT:  No conditional logic
+RC: Missing logical checker
+ET: Silently overrides yml file "
+https://github.com/kbeaugrand/SemanticKernel.Connectors.Memory.SqlServer/issues/86,Logic Bug (LB),Python,Unknown,Incorrect or Missing Control Flow-Missing Flow (IMCF.MF),Crash (CR),Semantic Kernel,"BT:   Did not implement an if block
+RC: Missing condition checker
+ET: Throws SqlClientException"
+https://github.com/LittleLittleCloud/Agent-ChatRoom/issues/52,Logic Bug (LB),Javascript,Agent Core,Others,Incorrect Output (IO),Semantic Kernel,"BT:  Method invoked in inappropriate place
+RC: Not related to LLM 
+ET: Provides the same message towice"
+https://github.com/SciSharp/LLamaSharp/issues/1128,API Bug (APIB),C#,Unknown,Component Mismatch (CM),Crash (CR),Semantic Kernel,"BT:  llama.cpp API version issue
+RC: Incorrect version of downloading DLLs
+ET: Throws Unknown pre-tokenizer type error"
+https://github.com/kbeaugrand/SemanticKernel.Assistants/issues/133,API Bug (APIB),C#,Agent Core,Requirement Violation (RV),Crash (CR),Semantic Kernel,"BT:  API not added in the requirements 
+RC: YamlDotNet package not added in the csproj
+ET: "
+https://github.com/LittleLittleCloud/Agent-ChatRoom/issues/28,Logic Bug (LB),C#,Unknown,Incorrect or Missing Control Flow-Missing Flow (IMCF.MF),Crash (CR),Semantic Kernel,"BT:  Incorrect logic of handling openai LLM
+RC: Some controll flow statements are missing and some parts incorrectly implemented
+ET: Throws TypeError"
+https://github.com/LittleLittleCloud/Agent-ChatRoom/issues/28,Logic Bug (LB),C#,Agent Core,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Crash (CR),Semantic Kernel,"BT:  Incorrect logic of handling openai LLM
+RC: Some controll flow statements are missing and some parts incorrectly implemented
+ET: Throws TypeError"
+https://github.com/kbeaugrand/SemanticKernel.Connectors.Memory.SqlServer/issues/70,Logic Bug (LB),C#,Unknown,Incorrect or Missing Control Flow-Missing Flow (IMCF.MF),Crash (CR),Semantic Kernel,"BT:  Incorrect logic of handling memory filters
+RC: Some controll flow statements are missing and some parts incorrectly implemented
+ET: Throws KeyError"
+https://github.com/kbeaugrand/SemanticKernel.Connectors.Memory.SqlServer/issues/70,Logic Bug (LB),C#,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Crash (CR),Semantic Kernel,"BT:  Incorrect logic of handling memory filters
+RC: Some controll flow statements are missing and some parts incorrectly implemented
+ET: Throws KeyError"
+https://github.com/tryAGI/LangChain/issues/338,Configuration Bug (CB),C#,Other,Incorrect or Missing Parameter Value-Incorrect Value (IMP.IV),Crash (CR),Semantic Kernel,"BT:  OllamaProvider configured with incorrect API default value
+RC: Passed API endpoint is incorrect
+ET: Throws method not found error"
+https://github.com/kbeaugrand/SemanticKernel.Connectors.Memory.SqlServer/pull/94/commits/f660eae4d9b46bc318f1fcff9067fadd5953c130,Logic Bug (LB),C#,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Crash (CR),Semantic Kernel,"BT:  SQL connection has incorrect logic
+RC: SQL connection opened in a different block
+ET: Throws InvalidOperationException "
+https://github.com/SciSharp/LLamaSharp/issues/1122,API Bug (APIB),C#,Agent Core,API Limitation (AL),Crash (CR),Semantic Kernel,"BT:  Library Issue
+RC: Issues with the llama.cpp latest update
+ET: Throws RuntimeError: The native library cannot be correctly loaded."
+https://github.com/LittleLittleCloud/Agent-ChatRoom/issues/44,Logic Bug (LB),C#,Agent Core,Incorrect or Missing Control Flow-Missing Flow (IMCF.MF),Silent Fail (SF),Semantic Kernel,"BT:  Deactivation logic incorrect
+RC: Some controll flow statements are missing and some parts incorrectly implemented
+ET: Channel deactivates silently after specific time"
+https://github.com/LittleLittleCloud/Agent-ChatRoom/issues/44,Logic Bug (LB),C#,Tools,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Silent Fail (SF),Semantic Kernel,"BT:  Deactivation logic incorrect
+RC: Some controll flow statements are missing and some parts incorrectly implemented
+ET: Channel deactivates silently after specific time"
+https://github.com/kbeaugrand/SemanticKernel.Connectors.Memory.SqlServer/issues/97,Logic Bug (LB),C#,Agent Core,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Silent Fail (SF),Semantic Kernel,"BT:  Incorrect logic for variable properties access scope
+RC: Incorrect access modifier set
+ET: Does not allow properties to modify once set"
+https://github.com/SciSharp/LLamaSharp/issues/1173,API Bug (APIB),C#,Unknown,Requirement Violation (RV),Crash (CR),Semantic Kernel,"BT:  Version mismatched
+RC: Requires new version of llama.cpp 
+ET: Throws error: Unknown model architecture: qwen3"
+https://github.com/tryAGI/LangChain/issues/343,API Bug (APIB),C#,Agent Core,Requirement Violation (RV),Crash (CR),Semantic Kernel,"BT:  API version mismatch
+RC: Incorrect version of LLamaSharp
+ET: Throws ArgumnetException"
+https://github.com/SciSharp/LLamaSharp/issues/1174,API Bug (APIB),C#,Unknown,Requirement Violation (RV),Unknown (UN),Semantic Kernel,"BT:  API version mismatch
+RC: Incorrect version of llama.cpp
+ET: Not specified."
+https://github.com/kbeaugrand/SemanticKernel.Connectors.Memory.SqlServer/issues/82,API Bug (APIB),C#,Agent Core,Requirement Violation (RV),Silent Fail (SF),Semantic Kernel,"BT:  Incorrect API version used
+RC: Used new version that has issues
+ET: And filter workign as or filter"
+https://github.com/SciSharp/LLamaSharp/issues/1199,Logic Bug (LB),C#,Agent Core,Incorrect or Missing Control Flow-Missing Flow (IMCF.MF),Silent Fail (SF),Semantic Kernel,"BT:  Missed async loop block
+RC: async loop not used for streaming data
+ET: Inconsistently adds the message to the chat history"
+https://github.com/hinthornw/trustcall/issues/15,Prompting Bug (PPB),Python,Agent Core,Incorrect Instruction-Prompt Specification (II.PS),Warning (WR),Langgraph,"BT:  Issues in the prompt construction
+RC:  System prompt is not detailed
+ET: Provides a warning: INFO:utilities.logger:Extracted profile data"
+https://github.com/JudgmentLabs/judgeval/issues/391,Resource Limitation Bug (RLB),Python,Unknown,API Limitation (AL),Crash (CR),Langgraph,"BT:  User API limit hit. 
+RC: API only provides 1 free developer project
+ET: Throws JudgmentAPIError"
+https://github.com/JoshuaC215/agent-service-toolkit/issues/156,API Bug (APIB),Python,Planning,Incorrect or Missing Control Flow-Missing Flow (IMCF.MF),Crash (CR),Langgraph,"BT:  New version changed some behaviours
+RC: Logical checker not added for new version code
+ET:  Throws TypeError"
+https://github.com/bytedance/deer-flow/issues/413,Logic Bug (LB),Python,Unknown,Incorrect Data Format-Output Data Format Error(IDF.ODFE),Incorrect Output (IO),Langgraph,"BT:  Output data cleaning logic not added
+RC: Output data not cleaned 
+ET: Output contains LLM thinking steps"
+https://github.com/JoshuaC215/agent-service-toolkit/issues/88,API Bug (APIB),Python,Tools,Requirement Violation (RV),Crash (CR),Langgraph,"BT:  API version mismatched
+RC: Issues in python version
+ET: Throws asyncio.exceptions.CancelledError"
+https://github.com/redis-developer/langgraph-redis/issues/64,Initialization Bug (IB),Python,Unknown,Incorrect or Missing Parameter Value-Incorrect Value (IMP.IV),Incorrect Output (IO),Langgraph,"BT:  config_param incorrectly initialized
+RC: incorrect parameter value passed for checkpoint_id
+ET: aget_tuple is not returning the correct checkpoint_id"
+https://github.com/redis-developer/langgraph-redis/issues/30,Logic Bug (LB),Python,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Incorrect Output (IO),Langgraph,"BT:  Incorrect logic for getting max response
+RC: Max response was hardcoded
+ET: It returns maximum 10 response"
+https://github.com/JudgmentLabs/judgeval/issues/377,Configuration Bug (CB),Python,Agent Core,Incorrect or Missing Parameter Value-Incorrect Value (IMP.IV),Unknown (UN),Langgraph,"BT:  a_execute_scoring is incorrectly configured 
+RC: throttle_value got incorrect value
+ET: It can cause temporary bans , HTTP 429 errors (rate limit exceeded), or even delays. "
+https://github.com/idosal/AgentLLM/issues/15,Resource Limitation Bug (RLB),Javascript,Unknown,Others,Partial Output (PO),LangChain-js,"BT:  Issue in the internet or user's end
+RC: Not realated to agnent
+ET: Starts thinking but does not complete"
+https://github.com/SamurAIGPT/EmbedAI/issues/29,Resource Limitation Bug (RLB),Javascript,Unknown,Others,Crash (CR),LangChain-js,"BT:  Issue in the internet or user's end
+RC: Not realated to agnent
+ET: Throws ModuleNotFoundError"
+https://github.com/SamurAIGPT/EmbedAI/issues/25,Configuration Bug (CB),Javascript,Planning,Incorrect or Missing Parameter Value-Incorrect Value (IMP.IV),Crash (CR),LangChain-js,"BT:  Incorrect IP address provided
+RC: Passed incorrect localhost reference
+ET: Throws 400 error"
+https://github.com/domeccleston/langchain-ts-starter/issues/2,API Bug (APIB),Javascript,Unknown,Requirement Violation (RV),Crash (CR),LangChain-js,"BT:  API version mismatch
+RC: Incorrect version of node.js
+ET: Throws error: Headers is not defined"
+https://github.com/SamurAIGPT/Open-Custom-GPT/issues/21,API Bug (APIB),Javascript,Unknown,Requirement Violation (RV),Crash (CR),LangChain-js,"BT:  API version mismatch
+RC: Incorrect version of nextjs
+ET: Throws ChunkLoadError"
+https://github.com/Azure-Samples/langchainjs-quickstart-demo/issues/5,Model Bug (MB),Javascript,Agent Core,Component Mismatch (CM),Crash (CR),LangChain-js,"BT:  Incorrect embedding model used
+RC: Embedding model incorrect
+ET: Throws Error: Cannot read properties of undefined (reading 'indexOf')"
+https://github.com/SamurAIGPT/EmbedAI/issues/32,API Bug (APIB),Javascript,Agent Core,Requirement Violation (RV),Crash (CR),LangChain-js,"BT:  API not compatible with the python version
+RC: Python version mismatch
+ET: Throws unknown token error"
+https://github.com/Azure-Samples/langchainjs-quickstart-demo/issues/4,API Bug (APIB),Javascript,Agent Core,API Limitation (AL),Crash (CR),LangChain-js,"BT:  API is blocked by external entity
+RC: Google blocks scrapping
+ET: Throws Error: Failed to get YouTube video transcription: "
+https://github.com/SamurAIGPT/EmbedAI/issues/48,API Bug (APIB),Javascript,Unknown,Requirement Violation (RV),Crash (CR),LangChain-js,"BT:  Library incompatable with python version
+RC: Issue with python version
+ET: Throws chromadb.errors.NoIndexException"
+https://github.com/yanniedog/Autocrew/issues/29,API Bug (APIB),Python,Unknown,Requirement Violation (RV),Crash (CR),CrewAI,"BT:  Incorrect API version
+RC: Incorrect openai version
+ET: Throws ImportError"
+https://github.com/LangGraph-GUI/CrewAI-GUI-Qt/issues/2,Logic Bug (LB),Python,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Crash (CR),CrewAI,"BT:  Tried to install specific part of library with quotation marks 
+RC: User incorrectly understood crewai[tools] as a seperate library
+ET: Throws Invalid requirement error"
+https://github.com/tonykipkemboi/trip_planner_agent/issues/1,API Bug (APIB),Python,Agent Core,Requirement Violation (RV),Crash (CR),CrewAI,"BT:  Library has issues in that specific python version
+RC: Python version mismatch
+ET: Throws TypeError"
+https://github.com/aibtcdev/ai-agent-crew/issues/9,Model Bug (MB),Python,Unknown,Component Mismatch (CM),Tool Ignored (TI),CrewAI,"BT:  Model specific issue
+RC:  Used incorrect LLM 
+ET: Agent fails to call tool"
+https://github.com/yanniedog/Autocrew/issues/49,Prompting Bug (PPB),Python,Agent Core,Incorrect Instruction-Prompt Specification (II.PS),Crash (CR),CrewAI,"BT:  Prompt is not detailed enough
+RC: Incorrect prompt instruction created unwanted column
+ET: Throws ValueError"
+https://github.com/yanniedog/Autocrew/issues/5,Configuration Bug (CB),Python,Tools,Incorrect Data Format-Input Data Format Error(IDF.IDFE),Crash (CR),CrewAI,"BT:  overall_goal incorrectly configured by passing longer string
+RC: Passed input data is too large
+ET: Throwing OSError"
+https://github.com/talhadar90/agentzero/issues/1,API Bug (APIB),Python,Tools,Requirement Violation (RV),Crash (CR),CrewAI,"BT:  API has version issue
+RC: Langchain version incompetable
+ET: Should throw ResolutionImpossible"
+https://github.com/botextractai/ai-crewai-multi-agent/issues/1,Resource Limitation Bug (RLB),Python,Tools,Others,Crash (CR),CrewAI,"BT: Incorrect API key
+RC: Issue in the user's API
+ET: Throws API error: 403"
+https://github.com/logan-markewich/agent-as-a-service/issues/1,API Bug (APIB),Python,Agent Core,Requirement Violation (RV),Crash (CR),LlamaIndex,"BT:  API not installed 
+RC: A requirement not added 
+ET: Throws ImportError"
+https://github.com/IBM/watsonx-developer-hub/issues/36,API Bug (APIB),Python,Unknown,Requirement Violation (RV),Crash (CR),LlamaIndex,"BT:  Used newer version API
+RC: Used latest code with old script
+ET: Throws WMLClientError"
+https://github.com/bentoml/rag-tutorials/issues/9,Resource Limitation Bug (RLB),Python,Agent Core,Others,Crash (CR),LlamaIndex,"BT:  User's system permission not provided
+RC:  Issue in the user's system
+ET: Throws OperationalError"

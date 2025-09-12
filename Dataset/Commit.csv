@@ -1,0 +1,1035 @@
+URL,Bug Type,Language,Component,Root Cause,Effect,Framework,Rational,File ,Code Before Change,Code After Change
+https://github.com/activeloopai/deeplake/commit/2804401c45f7e6cafd9cbae232da6e188a542f16,Initialization Bug (IB),Python,Tools,API Misuse-Invalid API Arguments (AM.IAA),Unknown (UN),Langchain,"BT: Incorrectly initialized dataset
+RC: Did not pass token parameter
+ET: ",test_pytorch.py,"ds = Dataset(storage=hub_cloud_ds.storage, read_only=True, verbose=False)","ds = Dataset(
+        storage=hub_cloud_ds.storage,
+        token=hub_cloud_ds.token,
+        read_only=True,
+        verbose=False,
+    )"
+https://github.com/activeloopai/deeplake/commit/2804401c45f7e6cafd9cbae232da6e188a542f16,Initialization Bug (IB),Python,Tools,API Misuse-Invalid API Arguments (AM.IAA),Unknown (UN),Langchain,"BT: Incorrectly initialized dataset
+RC: Did not pass token parameter
+ET: ",test_pytorch.py,another_ds = deeplake.dataset(hub_cloud_ds.path),"another_ds = deeplake.dataset(hub_cloud_ds.path, token=hub_cloud_ds.token)"
+https://github.com/activeloopai/deeplake/commit/2804401c45f7e6cafd9cbae232da6e188a542f16,Configuration Bug (CB),Python,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Crash (CR),Langchain,"BT: Incorrect key provided
+RC: Dataloader gets incorrect key to access
+ET: Incorect key (path) should provide KeyError",test_pytorch.py,"cat = sample[""jpegs/cats""]
+flower = sample[""pngs/flowers""]","cat = sample[""images/jpegs/cats""]
+        flower = sample[""images/pngs/flowers""]"
+https://github.com/argilla-io/argilla/commit/3a77e844d3c6a5a6a7dcf9b558a5eba26cd684a1,Reference Bug (RB),Javascript,Other,Others,Unknown (UN),Langchain,"BT: Did not import an icon that is used elsewhere 
+RC: This bug is not related to the LLM
+ET: The commit message says it's a non-beaking issue. No Further details provided",QuestionsForm.component.vue,"import { isEqual, cloneDeep } from ""lodash""","import ""assets/icons/external""
+import { isEqual, cloneDeep } from ""lodash"""
+https://github.com/jina-ai/langchain-serve/commit/762626d588167cbe8bacc10d2fa8a02a9c417b8b,Argument Bug (AB),Python,Unknown,Incorrect or Missing Parameter Value-Incorrect Value (IMP.IV),Unknown (UN),Langchain,"BT: Some arguemtns are missing
+RC: end_on_exit parameter is not passed
+ET: Not specified in the commit message",langchain_helper.py,"with self.tracer.start_as_current_span(
+                ""llm start"", context=context
+            ) ","with self.tracer.start_as_current_span(
+                ""llm"", context=context, end_on_exit=False
+            )"
+https://github.com/jina-ai/langchain-serve/commit/762626d588167cbe8bacc10d2fa8a02a9c417b8b,Logic Bug (LB),Python,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Unknown (UN),Langchain,"BT: Prompt length calculation logical error
+RC: Incorrectly calculated prompt length
+ET: Not specified in the commit message",langchain_helper.py,prompts_len += sum([len(prompt) for prompt in prompts]),prompts_len = sum([len(prompt) for prompt in prompts])
+https://github.com/jina-ai/langchain-serve/commit/a732e32627ec78f8645db0c1b3ee6fc5fa3ababd,API Bug (APIB),Python,Unknown,Requirement Violation (RV),Unknown (UN),Langchain,"BT: Python version incorrect
+RC: Python version requirement fixed
+ET: User did not specify the effect",ci.yml,Set up Python 3.7,name: Set up Python 3.9
+https://github.com/jina-ai/langchain-serve/commit/a732e32627ec78f8645db0c1b3ee6fc5fa3ababd,Reference Bug (RB),Python,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Unknown (UN),Langchain,"BT: Incorrect reference of run_test_server 
+RC: Incorrect controll statement
+ET: Incorrect import throws ImportError",test_basic_app.py,from .test_helper import run_test_server,from .helper import run_test_server
+https://github.com/argilla-io/argilla/commit/92392c4601f1368647d602a696ff202935e5b4d2,Logic Bug (LB),Python,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Unknown (UN),Langchain,"BT: Fixed the logical component of the code
+RC: Previous code may pass Null instances. Current code adds a filterning
+ET: Not explained in the commit message",records.py,"payload[""fields""] = self.fields","payload[""fields""] = {key: value for key, value in self.fields.items() if value is not None}"
+https://github.com/codedog-ai/codedog/commit/5041ab5e109dbd4ff543b7b1f52871f41c978ab6#diff-6446bb9dade32a2e741a70c788efa62d9f00b6342a0084717c9230332b1966ddR65-R119,Logic Bug (LB),Python,Tools,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Unknown (UN),Langchain,"BT: Updated logical check
+RC: Instead of checking if git_pr is none, the new code is checking if git_pr.body is none
+ET: Not mentioned in the commit",github_retriever.py,"body=git_pr.body if git_pr is not None else """",","body=git_pr.body if git_pr.body is not None else """","
+https://github.com/Undertone0809/promptulate/commit/43dc8fb3435090a6798f1234215a967e4e52186d,Logic Bug (LB),Python,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Unknown (UN),Langchain,"BT: File path format is incorrect. 
+RC: Incorrect flow of executing code
+ET: Not specified in the commit",Makefile,poetry run pytest -c pyproject.toml --cov-report=html --cov=promptulate .\tests\test_chat.py .\tests\output_formatter\,poetry run pytest -c pyproject.toml --cov-report=html --cov=promptulate ./tests/test_chat.py ./tests/output_formatter
+https://github.com/argilla-io/argilla/commit/dcafd79f02715abf9ba492ae8fd7dcc0173e3107,API Bug (APIB),Python,Tools,API Misuse-Wrong API Context (AM.WAC),Unknown (UN),Langchain,"BT: Wrong API used 
+RC: Failed to understand the task of require_dependencies
+ET: The bug is non-beraking. However, no further details is provided",,"from argilla.utils.dependency import require_dependency
+
+require_dependency(""sentence-transformers"")","from argilla.utils.dependency import require_dependencies
+require_dependencies(""sentence-transformers"")"
+https://github.com/jina-ai/langchain-serve/commit/471830bdac8de01515c357c2a886a2f2255b5ec0,API Bug (APIB),Python,Agent Core,Requirement Violation (RV),Crash (CR),Langchain,"BT: API is not compatable with different langchain version
+RC: The requriement for langchain version is not fixed. 
+ET: This issue throws ImportError",hitl.py,from langchain.callbacks.manager import CallbackManager,"try:
+    from langchain.callbacks.manager import CallbackManager
+except ImportError:
+    from langchain.callbacks import CallbackManager"
+https://github.com/BerriAI/litellm/commit/a76d9919521e0723b412e222fa0359d91f80f994#diff-7246c7aef349bfce6c1fc341bde2fcbcecd621447483e2626d1b7d1ecc0a8d56L76-R1358,Logic Bug (LB),Python,Tools,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Crash (CR),Langchain,"BT: Logical issue of accessing key-value object
+RC: Incorrect flow of accessing parameter value
+ET: If mode is not present, it will throw KeyError",,"received_model = cast(OpenAIRealtimeStreamSessionEvents, result)[""session""][
+                ""model""
+            ]","received_model = cast(OpenAIRealtimeStreamSessionEvents, result)[
+                ""session""
+            ].get(""model"", None)"
+https://github.com/activeloopai/deeplake/commit/eb4cd3054a082126d13dd6a9330e74ef0109ac49,Logic Bug (LB),Python,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Unknown (UN),Langchain,"BT: The old code assumes x is always a valid path which may not work for all cases
+RC: Did not work with the realtive path.
+ET: Not specified in the comment",dataset.py,enabled_tensors.extend(self[x].meta.links.keys()),"enabled_tensors.extend(
+                        self[posixpath.relpath(x, self.group_index)].meta.links.keys()
+                    )"
+https://github.com/activeloopai/deeplake/commit/623f9038cf933a909de586c19d15f96179ae9c30,Configuration Bug (CB),Python,Unknown,Incorrect or Missing Parameter Value-Missing Value (IMP.MV),Unknown (UN),Langchain,"BT: Not configured ContainerSasPermissions correctly
+RC: Did not pass values of create and add 
+ET: Not specified in the commit",azure.py,"permission=ContainerSasPermissions(
+                read=True, write=True, delete=True, list=True
+            )","permission=ContainerSasPermissions(
+                read=True, write=True, delete=True, list=True, create=True, add=True
+            )"
+https://github.com/activeloopai/deeplake/commit/623f9038cf933a909de586c19d15f96179ae9c30,Configuration Bug (CB),Python,Unknown,Incorrect or Missing Parameter Value-Incorrect Value (IMP.IV),Unknown (UN),Langchain,"BT: get_blob_client parameter misconfigured. 
+RC: Passed incorrect file path. 
+ET: Not specified in the commit message. ",azure.py,source_blob = self.container_client.get_blob_client(blob_name)," source_blob = self.container_client.get_blob_client(
+                f""{self.root_folder}/{blob_name}""
+            )"
+https://github.com/TensorOpsAI/LLMstudio/commit/7ad9c7eaf9f06468bdb4dc925facb922c89bd378,Configuration Bug (CB),Python,Unknown,Incorrect or Missing Parameter Value-Missing Value (IMP.MV),Unknown (UN),Langchain,"BT: agenerate_client parameter misconfigured.
+RC: agenerate_client did not get request parameter
+ET: Not specified in commit",provider.py,return self.selected_model.agenerate_client(), return await self.selected_model.agenerate_client(request)
+https://github.com/argilla-io/argilla/commit/1a3805ad6fe229dfa53b898c901ae5d36a95bdef,Initialization Bug (IB),Python,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Silent Fail (SF),Langchain,"BT: Title string initialized incorrectly
+RC: Typeo in the name of variable
+ET: No variable substituted ",es.js,"title: ""Bienvenido a {Space}"",","title: ""Bienvenido a {space}"""
+https://github.com/intel/ipex-llm/commit/7d27f134ddd094ef49b3dd71487261c452d46056,Logic Bug (LB),Python,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Unknown (UN),Langchain,"BT: Logical condition incorrect
+RC: Incorrect logical check
+ET: Not specified in the commit","convert.py
+",if past_key_values is not None: ," if past_key_values and isinstance(past_key_values, bool):  "
+https://github.com/intel/ipex-llm/commit/7d27f134ddd094ef49b3dd71487261c452d46056,Logic Bug (LB),Python,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Unknown (UN),Langchain,"BT: Incorrect data format returned 
+RC: Incorrect type of variable passed for past_key_values
+ET: Not specified in the commit","convert.py
+","return CausalLMOutputWithPast(
+        loss=None,
+        logits=logits,
+        past_key_values=1,  # just an indicator
+        hidden_states=None,
+        attentions=None,
+    )","return CausalLMOutputWithPast(
+        loss=None,
+        logits=logits,
+        past_key_values=True,  # just an indicator
+        hidden_states=None,
+        attentions=None,
+    )"
+https://github.com/intel/ipex-llm/commit/52863dd5670bbab341b44f721693c94a58140c94,Configuration Bug (CB),Python,Unknown,Incorrect or Missing Parameter Value-Incorrect Value (IMP.IV),Crash (CR),Langchain,"BT: Payload configured with incoorect value
+RC: model parameter recieved incorrect value
+ET: Not specified in the commit ",vllm_online_benchmark.py,"payload = {
+                    ""model"": model_name,
+                    ""prompt"": prompt,
+                    ""n"": 1,
+                    ""best_of"": 1,
+                    ""use_beam_search"": False,
+                    ""temperature"": 0.0,
+                    ""top_p"": 1.0,
+                    ""max_tokens"": max_tokens,
+                    ""ignore_eos"": True,
+                    ""stream"": True  # 开启streaming模式
+                }","payload = {
+                    ""model"": model,
+                    ""prompt"": prompt,
+                    ""n"": 1,
+                    ""best_of"": 1,
+                    ""use_beam_search"": False,
+                    ""temperature"": 0.0,
+                    ""top_p"": 1.0,
+                    ""max_tokens"": max_tokens,
+                    ""ignore_eos"": True,
+                    ""stream"": True  # 开启streaming模式
+                }"
+https://github.com/shamspias/customizable-gpt-chatbot/commit/b98b8dd0f95ad5082840974aec6ed1aa427452da,Initialization Bug (IB),Python,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Crash (CR),Langchain,"BT: Name of the class incorrectly initialized
+RC: Tried to access an undefined variable
+ET: It should throw NameError for incorrect variable name",models.py,"def __str__(self):
+        return f""Conversation {self.title} - {self.user.username}""","def __str__(self):
+        return f""Conversation {self.title} - {self.user.name}"""
+https://github.com/51bitquant/ai-hedge-fund-crypto/commit/2b796e1182764d6349915fbc20358096af035b30,Reference Bug (RB),Python,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Crash (CR),Langchain,"BT: Incorrect reference of Backtester module
+RC: Incorrect import
+ET: It should throw ModuleNotFoundError for incorrectly importing ",backtest.py,from src.backtester import Backtester,from src.backtester.backtester import Backtester
+https://github.com/finaldie/auto-news/commit/8d9611136fd64490a877ae00270cc36aed3369ac,Logic Bug (LB),Python,Tools,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Unknown (UN),Langchain,"BT: Returned output format is incorrect
+RC: Returned incorrect format output
+ET: Not specified in the commit ",notion.py,"return self.createPage(parent, props, None)","return self.createPage(parent, props, [])"
+https://github.com/linjungz/chat-with-your-doc/commit/a5e9d6e9ecbcccf2196a20de17767babd5b7d8bb,Configuration Bug (CB),Python,Tools,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Unknown (UN),Langchain,"BT: VECTORDB_PATH was incorrect (both path and path format)
+RC: Incorrect format of path. 
+ET: Not mentioned in the commit ",chat_cli.py,"VECTORDB_PATH = int(os.getenv(""VECTORDB_PATH""))","VECTORDB_PATH = os.getenv(""VECTORDB_PATH"")"
+https://github.com/thiswillbeyourgithub/wdoc/commit/528878782a460c3a48f023463dbb629f72ee4f3b#diff-f0b792d7cb9c67f67a110068d5251080d2866455beb5783cfbcb3fe563ebd62fR1562-R1652,Configuration Bug (CB),Python,Unknown,Incorrect or Missing Parameter Value-Incorrect Value (IMP.IV),Unknown (UN),Langchain,"BT: Incorrect data passed to yel funciton
+RC: Passed incorrect parameter value 
+ET: Not speciified",WDoc.py,"yel(f""Tokens used by strong model to combine the intermediate answers: ${combine_cost:.1f}"")","yel(f""Tokens used by strong model to combine the intermediate answers: ${combine_cost:.5f}"")"
+https://github.com/vtuber-plan/langport/commit/24923df4831fd5cfcc5855b8552a48ef2729c4c7#diff-5fa876287ef1b64a5e58bb56ac234a91c4318fd562a04cc002090a1502d0b333L343,Configuration Bug (CB),Python,Agent Core,Incorrect or Missing Parameter Value-Missing Value (IMP.MV),Unknown (UN),Langchain,"BT: Method invoked without passing all parameters requried
+RC: from_config missing one parameter
+ET: Not specified",compression.py,model: nn.Module = AutoModelForCausalLM.from_config(config),"model: nn.Module = AutoModelForCausalLM.from_config(config, trust_remote_code=trust_remote_code)"
+https://github.com/vtuber-plan/langport/commit/24923df4831fd5cfcc5855b8552a48ef2729c4c7#diff-af68e7b24ff5faa709d1eeebb326b60f5e9ae56e0980c8fb12d5a3ccbb7afc2eL114-L178,Configuration Bug (CB),Python,Unknown,Incorrect or Missing Parameter Value-Missing Value (IMP.MV),Unknown (UN),Langchain,"BT:AutoConfig.from_pretrained function called without proper parameters
+RC: trust_remote_code parameter not passed 
+ET: Not specified ",huggingface.py,config = AutoConfig.from_pretrained(model_path),"trust_remote_code = from_pretrained_kwargs.get(""trust_remote_code"", False)
+config = AutoConfig.from_pretrained(model_path, trust_remote_code=trust_remote_code)"
+https://github.com/BerriAI/litellm/commit/5ff6db50627b62e160b5c8022a9ab136d0e3f9a3#diff-2823e3ca4804c9596e38dde93bc4606471ec467c223de4fb66a70152181f061cR95-R1811,API Bug (APIB),Python,Agent Core,API Misuse-Wrong API Context (AM.WAC),Unknown (UN),Langchain,"BT: Incorrect API invoded
+RC: Incorrect understanding about the usage of ChatCompletionUsageBlock
+ET: Not specified in the commit",vertex_and_google_ai_studio_gemini.py,"usage = ChatCompletionUsageBlock(
+                
+                    prompt_tokens=processed_chunk[""usageMetadata""].get(
+                        ""promptTokenCount"", 0
+                    ),","
+                usage = Usage(
+                    prompt_tokens=processed_chunk[""usageMetadata""].get(
+                        ""promptTokenCount"", 0
+                    ),"
+https://github.com/argilla-io/argilla/commit/df56c154e2b5c3bfacb961c99c7aa380ad1734c9#diff-f1b89b7b9d7c8c68712ce8a2d707f1de2133622f50eba5b59076d84050c753acL29-R31,Argument Bug (AB),Python,Unknown,API Misuse-Invalid API Arguments (AM.IAA),Unknown (UN),Langchain,"BT: _get_filed got incorrect parameter type
+RC: db received incorrect data. Expected AsyncSession, passed string
+ET: Commit message says non-breakig bug. But not specified. ",fields.py,"async def _get_field(db: ""AsyncSession"", field_id: UUID) -> ""Field"":","async def _get_field(db: AsyncSession, field_id: UUID) -> Field:"
+https://github.com/finaldie/auto-news/commit/d08e6a3af3c4197d0fb509b3c495c2821b9ee3fe#diff-38409764c1bb561561fe28a73f7913e2abd2ce9035f9743ccc4d47cf8fc875b4R67-R68,Initialization Bug (IB),Python,Agent Core,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Crash (CR),Langchain,"BT: Class not inittialized properly if api_key and model_name not provided
+RC: Class initialization flow incorrect if parameter value not provided
+ET: If user initializes the class without providing attributes like model_name, it would throw openai InvalidRequestError",llm_agent.py,"def __init__(self, api_key, model_name):","def __init__(self, api_key="""", model_name=""gpt-3.5-turbo""):"
+https://github.com/georgia-tech-db/evadb/commit/05132846f27bae56fbcd7d147a7611ad550beea6#diff-64a1de9a45cb740cc4a969dacbf14c294549a19184aa943dd5f01b4ff38bb060R16,Logic Bug (LB),Python,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Unknown (UN),Langchain,"BT: Incorrect logical command 
+RC: Incorrect attribute asked to drop 
+ET: Not specified",text_summarization_with_evadb.py,"cursor.query(""DROP UDF IF EXISTS TextSummarizer;"").df()","cursor.query(""DROP FUNCTION IF EXISTS TextSummarizer;"").df()"
+https://github.com/thiswillbeyourgithub/wdoc/commit/e27d9f8f65209f5f818c3bb07173e43c145999fc,Logic Bug (LB),Python,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Unknown (UN),Langchain,"BT: Incorect logical statement check
+RC: Logical flow incorrect
+ET: Not specified ",loaders.py,"if ph == ""tags"":"," if ph == ""tags"" or ph == ""allfields"":"
+https://github.com/kyegomez/swarms/commit/490e2783856c2ee89e7e739701529bb79a778d89#diff-d037d22d84457b481f0567da108b3fa3a2edf9866d59089d57a5854a96562096R3,Initialization Bug (IB),Python,Other,Others,Unknown (UN),Langchain,"BT: Incorrectly re-initialized logger
+RC: Logger not directly connected to agent
+ET: Not specified ",loguru_logger.py,"logger = logger.add(
+    ""MessagePool.log"",
+    level=""INFO"",
+    colorize=True,)","logger.add(
+    ""MessagePool.log"",
+    level=""INFO"",
+    colorize=True,)"
+https://github.com/thiswillbeyourgithub/wdoc/commit/95595fe1f9b7e5156792bfa092f0b2b68c0832a4,Initialization Bug (IB),Python,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Unknown (UN),Langchain,"BT: Incorrectly initialized h variable 
+RC: h variable constraction logi error
+ET: Not specified",misc.py, h = hashlib.sha256(f.read() + str(instruct)).hexdigest()[:15],h = hashlib.sha256(f.read() + str(self.model)).hexdigest()[:15]
+https://github.com/thedigitalworkplace/Autogen/commit/1ba7a681a93a1308e608dcfedee2f29a6dab4a76#diff-e5e45bd0c38c1fd4a21ca55a40b0df2161922f15d285de1bdadbe7d110aa109fR446-R458,Logic Bug (LB),Python,Agent Core,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Resource Overuse (RO),Autogen,"BT: Indentation logic incorrect
+RC: Component written in incorrect logical block
+ET: Each responses will be called mutiple times, taking significant resources",_worker_runtime.py," for agent_id in recipients:
+            # TODO: avoid sending to the sender.
+            message_context = MessageContext(
+                sender=None,
+                topic_id=topic_id,
+                is_rpc=False,
+                cancellation_token=CancellationToken(),
+            )
+            agent = await self._get_agent(agent_id)
+            with MessageHandlerContext.populate_context(agent.id):
+
+                async def send_message(agent: Agent, message_context: MessageContext) -> Any:
+                    with trace_block(self._tracer, ""process"", agent.id, parent=event.metadata):
+                        await agent.on_message(message, ctx=message_context)
+
+                future = send_message(agent, message_context)
+            responses.append(future)
+            # Wait for all responses.
+            try:
+                await asyncio.gather(*responses)
+            except BaseException as e:
+                logger.error(""Error handling event"", exc_info=e)","        for agent_id in recipients:
+            # TODO: avoid sending to the sender.
+            message_context = MessageContext(
+                sender=None,
+                topic_id=topic_id,
+                is_rpc=False,
+                cancellation_token=CancellationToken(),
+            )
+            agent = await self._get_agent(agent_id)
+            with MessageHandlerContext.populate_context(agent.id):
+
+                async def send_message(agent: Agent, message_context: MessageContext) -> Any:
+                    with trace_block(self._tracer, ""process"", agent.id, parent=event.metadata):
+                        await agent.on_message(message, ctx=message_context)
+
+                future = send_message(agent, message_context)
+            responses.append(future)
+        # Wait for all responses.
+        try:
+            await asyncio.gather(*responses)
+        except BaseException as e:
+            logger.error(""Error handling event"", exc_info=e)"
+https://github.com/thedigitalworkplace/Autogen/commit/8c56cc7d8092711514efc5bb32964bb1844414ba,Reference Bug (RB),Python,Agent Core,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Crash (CR),Autogen,"BT: Module reffered from incorrect pacakge
+RC: Incorrect import statement
+ET: Incorrect import should throw ImportError",llamaindex_conversable_agent.py,from llama_index_client import ChatMessage,from llama_index.core.base.llms.types import ChatMessage
+https://github.com/thedigitalworkplace/Autogen/commit/2191b3144bff133f858fdd90f1acb8149ba8be38,Logic Bug (LB),Python,Tools,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Slow Output (SO),Autogen,"BT: Logically incorrect async code 
+RC: Incorrect async logic. Called await twice
+ET: asyncio.gather will be a redundent call which will slow the response",coding_one_agent_direct.py,"results: List[ToolExecutionTaskResult] = await asyncio.gather(
+                *[await self.send_message(ToolExecutionTask(function_call=call), self.id) for call in response.content]
+            )","results: List[ToolExecutionTaskResult] = await asyncio.gather(
+                *[self.send_message(ToolExecutionTask(function_call=call), self.id) for call in response.content]
+            )"
+https://github.com/thedigitalworkplace/Autogen/commit/ecbc3b7806a931a1b5bb4e185ef50c41e3b9bc5e,Argument Bug (AB),Python,Agent Core,API Misuse-Invalid API Arguments (AM.IAA),Unknown (UN),Autogen,"BT: send_message method got incorrect parameter
+RC: send_message got incorrect parameter
+ET: Not specified in the commit",patterns.py,"response = runtime.send_message(ChatMessage(body=message, sender=""host""), chat)","response = runtime.send_message(TextMessage(content=message, source=""host""), chat)"
+https://github.com/thedigitalworkplace/Autogen/commit/ecbc3b7806a931a1b5bb4e185ef50c41e3b9bc5e,Configuration Bug (CB),Python,Unknown,API Misuse-Invalid API Arguments (AM.IAA),Unknown (UN),Autogen,"BT: _rewrite_plan method was configured incorrectly
+RC: _rewrite_plan had incorrect value in the second parameter
+ET: Not specified ",orchestrator.py,"plan = await self._rewrite_plan(team, ledger, message.sender)","plan = await self._rewrite_plan(team, ledger, message.source)"
+https://github.com/NeoRyang/autogen-websockets/commit/f8dd10df87d061ec690d55ee233dcc93b693f893#diff-1ebfaf6cb3592166b73835fa82333cb7109e7c624865c0039a7b22ff34aa27faR6-R10,Configuration Bug (CB),Python,Agent Core,Incorrect or Missing Parameter Value-Incorrect Value (IMP.IV),Silent Fail (SF),Autogen,"BT: websockets.client configured incorrectly
+RC: websockets.client was connected with incorrect url
+ET: Client would be waiting in incorrect endpoint",client.py,"uri = ""ws://localhost:8000/ws/1234""  # Use your server URI here
+    async with websockets.connect(uri) as websocket:
+        while True:
+            print(""waiting for message"")","    uri = ""ws://localhost:8000/ws/1234""  # Use your server URI here
+    async with websockets.connect(uri) as websocket:
+        while True:
+            print(""waiting for message"")"
+https://github.com/thedigitalworkplace/Autogen/commit/306541e2472e8c207c2c053cc4ea5b1aeef3e332#diff-c7ed1a879243499c41f5cdda7260c2a10bee37e5bc47c2d22a870d2a15ecc621R91-R102,Logic Bug (LB),Python,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Crash (CR),Autogen,"BT: Boolean value comparison logic incorrect
+RC: Condition check logic incorrectly implemented
+ET: Should throw false AssertionError",test_routed_agent.py," assert agent.handler_one_called == True
+    assert agent.handler_two_called == False"," assert agent.handler_one_called is False
+    assert agent.handler_two_called is False"
+https://github.com/thedigitalworkplace/Autogen/commit/52c2a70e95df2006e0094e96ad192243148ec4bb#diff-69674b8fc2c1b1953ec74ed41455677cb545eb81677fcd85db96f47f60d1b28fR22-R68,Prompting Bug (PPB),Python,Agent Core,Incorrect Instruction-Prompt Specification (II.PS),Incorrect Output (IO),Autogen,"BT:  Prompt lacks system instructions
+RC: Prompt lacks system message
+ET: Agent will retrun output without following the system prompt",main.py,"input_messages=(await self._model_context.get_messages()),","input_messages=self._system_messages + (await self._model_context.get_messages()),"
+https://github.com/thedigitalworkplace/Autogen/commit/d941a0a733499aee22165df845c7514ff57f5952#diff-a1f9eead4a154ae59a201dcc7a75d85c6ff70ec37ea726f304e3ff590639bcb8R15-R56,Configuration Bug (CB),Python,Agent Core,Incorrect or Missing Parameter Value-Incorrect Value (IMP.IV),Incorrect Output (IO),Autogen,"BT: ChatMessage parameter misconfiguration
+RC: ChatMessage called with incorrect parameter value
+ET: returns incorrect response",patterns.py,"response = runtime.send_message(ChatMessage(body=""Run a show!"", sender=""external""), chat)","response = runtime.send_message(ChatMessage(body=message, sender=""host""), chat)"
+https://github.com/thedigitalworkplace/Autogen/commit/d941a0a733499aee22165df845c7514ff57f5952#diff-a1f9eead4a154ae59a201dcc7a75d85c6ff70ec37ea726f304e3ff590639bcb8L105,Configuration Bug (CB),Python,Agent Core,Incorrect or Missing Parameter Value-Incorrect Value (IMP.IV),Incorrect Output (IO),Autogen,"BT: ChatMessage parameter misconfiguration
+RC: ChatMessage called with incorrect (predefined) parameter value
+ET: returns incorrect response",patterns.py,"response = runtime.send_message(
+        ChatMessage(
+            body=""Write a simple FastAPI webapp for showing the current time."",
+            sender=""customer"",
+        ),
+        chat,
+    )","response = runtime.send_message(
+        ChatMessage(
+            body=message,
+            sender=""customer"",
+        ),
+        chat,
+    )"
+https://github.com/thedigitalworkplace/Autogen/commit/508d2665f9dc85db8833e5ddba7576fcc1974688#diff-7e1e6bfc49ab6dff4b52ba5677edcda6aff4ae436001c46cecd45847d4d71caeR140,Logic Bug (LB),Python,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Silent Fail (SF),Autogen,"BT: Buggy logic for writing in file
+RC: Incorrectly handled the file writing code
+ET: The code executes perfectly but the output is not flushed into the file",local_commandline_code_executor.py,"written_file = (self._work_dir / filename).resolve()
+written_file.open(""w"", encoding=""utf-8"").write(code)","written_file = (self._work_dir / filename).resolve()
+with written_file.open(""w"", encoding=""utf-8"") as f:
+    f.write(code)"
+https://github.com/thedigitalworkplace/Autogen/commit/7cfcf5501f8a1aa033257dc85e6aca29f954cb68#diff-abb1d050329eb20452af099582df3efa9bd5ccb69b02a0a57daf26e911159d31R425,Logic Bug (LB),Python,Planning,Incorrect or Missing Control Flow-Missing Flow (IMCF.MF),Incorrect Output (IO),Autogen,"BT: Not  complete prompt passed in the message. And tools are not filtered for the call. 
+RC: Filtering logic missing
+ET: The agent will produce output without complete message and filtered tools ",cohere.py,"new_message = {
+                ""role"": ""CHATBOT"",
+                ""message"": message[""content""],
+                ""tool_calls"": [
+                    {
+                        ""name"": tool_call_.get(""function"", {}).get(""name""),
+                        ""parameters"": json.loads(tool_call_.get(""function"", {}).get(""arguments"") or ""null""),
+                    }
+                    for tool_call_ in message[""tool_calls""]
+                ],
+}","message_tool_calls = []
+            for tool_call in message[""tool_calls""] or []:
+                if (not tool_call.get(""function"", {}).get(""name"")) or tool_call.get(""function"", {}).get(
+                    ""name""
+                ) not in cohere_tool_names:
+                    new_message = {
+                        ""role"": ""CHATBOT"",
+                        ""message"": message.get(""name"") + "":"" + message[""content""] + str(message[""tool_calls""]),
+                    }
+                    cohere_messages.append(new_message)
+                    continue
+
+                tool_calls.append(tool_call)
+                message_tool_calls.append(
+                    {
+                        ""name"": tool_call.get(""function"", {}).get(""name""),
+                        ""parameters"": json.loads(tool_call.get(""function"", {}).get(""arguments"") or ""null""),
+                    }
+                )
+
+            if not message_tool_calls:
+                continue
+
+new_message = {
+                ""role"": ""CHATBOT"",
+                ""message"": message.get(""name"") + "":"" + message[""content""],
+                ""tool_calls"": message_tool_calls,
+            }"
+https://github.com/thedigitalworkplace/Autogen/commit/1b8d65df0a54354b5fec152f9aa4162827a7fb2d#diff-d6a579a37b549deac1aa465a82821986f69c9f06ddbc16f14e313a9b7389b707R11-R33,Initialization Bug (IB),Python,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Crash (CR),Autogen,"BT: test_dir incorrectly provided
+RC: Incorrect file path provided
+ET: It should throw FileNotFound error",test_pgvector_retrievechat.py,"test_dir = os.path.join(os.path.dirname(__file__), ""../.."", ""test_files"")","test_dir = os.path.join(os.path.dirname(__file__), ""../../.."", ""test_files"")"
+https://github.com/thedigitalworkplace/Autogen/commit/1b8d65df0a54354b5fec152f9aa4162827a7fb2d#diff-5c90ea22e07a2b469f2fa38e46b32d69f19942152caf396628736288971a1ffcR26-R32,Initialization Bug (IB),Python,Tools,API Misuse-Wrong API Context (AM.WAC),Unknown (UN),Autogen,"BT: db initialized incorrectly
+RC: Incorrect understadnign of the task of PGVector 
+ET: Not specified in the commit ",test_pgvectordb.py,"from autogen.agentchat.contrib.vectordb.pgvector import PGVector
+db = PGVector(connection_string=db_config[""connection_string""])","from autogen.agentchat.contrib.vectordb.pgvectordb import PGVectorDB
+db = PGVectorDB(connection_string=db_config[""connection_string""])"
+https://github.com/thedigitalworkplace/Autogen/commit/b46625934ba5143c1a8fde6eb5b174178227c8e1,Logic Bug (LB),Python,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Silent Fail (SF),Autogen,"BT: Incorrect logic for termination
+RC: Termination logic incorrectly implemented
+ET: Terminates when _rount_count is below the threshold by one",group_chat.py," if self._round_count == self._num_rounds * len(self._participants):
+            # End the conversation after the specified number of rounds.
+            await self.publish_message(Termination())","if self._round_count > self._num_rounds * len(self._participants):
+    # End the conversation after the specified number of rounds.
+    await self.publish_message(Termination())
+    return"
+https://github.com/thedigitalworkplace/Autogen/commit/b46625934ba5143c1a8fde6eb5b174178227c8e1,Logic Bug (LB),Python,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Silent Fail (SF),Autogen,"BT: Buffer message clear logical flow incorrect
+RC: Buffer clearance logic is incorrect
+ET: Clears the buffer instead of removing single instance",multi_agent_debate.py, self._buffer.clear(),"self._buffer.pop((message.session_id, message.round))"
+https://github.com/thedigitalworkplace/Autogen/commit/871a83fcc5aff0bd8e2d4701ebf48819f5e1e7d0,Configuration Bug (CB),Python,Agent Core,API Misuse-Invalid API Arguments (AM.IAA),Unknown (UN),Autogen,"BT: create method incorrectly configured
+RC: create method took more parameter
+ET: Not specified in the commits",_assistant_agent.py,"result = await self._model_client.create(
+                llm_messages, tools=self._tools + self._handoff_tools, cancellation_token=cancellation_token
+            )","result = await self._model_client.create(llm_messages, cancellation_token=cancellation_token)"
+https://github.com/thedigitalworkplace/Autogen/commit/972b4ed024fbf5657467196832017ac9380da880,Logic Bug (LB),Python,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Incorrect Output (IO),Autogen,"BT:  Incorrect conditional logic
+RC: Logic flow is incorrect
+ET: It will return message even when all the conditions are not satisfied",transforms.py,"if self._max_messages is None:
+            return messages","
+if self._max_messages is None or len(messages) <= self._max_messages:
+            return messages"
+https://github.com/thedigitalworkplace/Autogen/commit/4e95630fa95111166d29d24fe47ffcdea059acbb,Logic Bug (LB),C#,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Unknown (UN),Autogen,"BT: Item add logic in conversationHistory is incorrect
+RC: conversationHistory received incorrect item to add
+ET: Not clear from the commit",GroupChat.cs," if (chatHistory != null)
+        {
+            conversationHistory.AddRange(conversationWithName);
+            
+        }"," if (chatHistory != null)
+        {
+            conversationHistory.AddRange(chatHistory);
+        }"
+https://github.com/thedigitalworkplace/Autogen/commit/a1d782d3ec1f732e4ed49b49f72850ca336f30b5,Configuration Bug (CB),Python,Planning,Incorrect or Missing Parameter Value-Incorrect Value (IMP.IV),Unknown (UN),Autogen,"BT: cancellation_token is incorrectly configured
+RC: cancellation_token got incorrect parameter value
+ET: Not specified in the commit",_user_proxy_agent.py,"agent_task = asyncio.create_task(
+                        agent.on_messages(
+                            [TextMessage(content=""What is your name? "", source=""user"")],
+                            cancellation_token=CancellationToken(),
+                        )
+                    )","agent_task = asyncio.create_task(
+                        agent.on_messages(
+                            [TextMessage(content=""What is your name? "", source=""user"")],
+                            cancellation_token=token,
+                        )
+                    )"
+https://github.com/tryAGI/LangChain/commit/eb75afd241c90db20e1fa383eb84da58ac4a143e#diff-4088b8929fea6d09ed39f88e1c8339f7b2277e6a1610a16dc9c7c4cb7159905dR1-L12,Reference Bug (RB),C#,Unknown,Incorrect Instruction-Prompt Orchestration (II.PO),Crash (CR),Semantic Kernel,"BT: Reffered incorrect class location
+RC: Code flow incorrect
+ET: Should throw ImportError",ConversationDTO.cs,using LangChain.Utilities.Classes.Repository;,using LangChain.Serve.Classes.Repository;
+https://github.com/SciSharp/LLamaSharp/commit/14ba50fe5959080bd1a1baef51722d35323d3bfb,Logic Bug (LB),C#,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Crash (CR),Semantic Kernel,"BT: Tokenizer logic not implemented to address null instances
+RC: Tokenizer controll flow not correctly implemented for documents[idx]
+ET: May thow NullReferenceException if documents[idx] is null ",LLamaReranker.cs,var docTokens = Context.Tokenize(documents[idx]);,"var docTokens = Context.Tokenize(documents[idx] ?? """");"
+https://github.com/tryAGI/LangChain/commit/0d497ca234ccfefa9002895447833e60ea274a48#diff-382d06e695d3c0a42f6217f855951d97fded6633cd5a5c25f1cda63a1d6783f1L35-R44,Reference Bug (RB),C#,Agent Core,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Crash (CR),Semantic Kernel,"BT:  Incorrect reference of module
+RC: File import controll flow module incorrect
+ET: For incorrect reference, it should throw namespace not found error",OllamaChatModel.cs,"await Provider.Api.PullModelAndEnsureSuccessAsync(Id, cancellationToken: cancellationToken).ConfigureAwait(false);","await Provider.Api.Models.PullModelAndEnsureSuccessAsync(Id, cancellationToken: cancellationToken).ConfigureAwait(false);"
+https://github.com/tryAGI/LangChain/commit/0d497ca234ccfefa9002895447833e60ea274a48#diff-382d06e695d3c0a42f6217f855951d97fded6633cd5a5c25f1cda63a1d6783f1L35-R44,Initialization Bug (IB),C#,Agent Core,API Misuse-Invalid API Arguments (AM.IAA),Unknown (UN),Semantic Kernel,"BT:  Class initialized incorrectly
+RC: Passed incorrect parameter
+ET: Not provided in the commit",OllamaChatModel.cs,"var response = Provider.Api.Completions.GenerateCompletionAsync(new GenerateCompletionRequest
+        {
+            Prompt = prompt,
+            Model = Id,
+            Options = Provider.Options,
+            Stream = true,
+            Raw = true,
+            Format = UseJson ? ""json"" : string.Empty,
+        }, cancellationToken);","var response = Provider.Api.Completions.GenerateCompletionAsync(new GenerateCompletionRequest
+        {
+            Prompt = prompt,
+            Model = Id,
+            Options = Provider.Options,
+            Stream = true,
+            Raw = true,
+            Format = UseJson ? GenerateCompletionRequestFormat.Json : null,
+        }, cancellationToken);"
+https://github.com/tryAGI/LangChain/commit/0d497ca234ccfefa9002895447833e60ea274a48#diff-04c1e8ee6f1c12e875dcff39617e8e6a5d4e5732c57632d03a24beff9c399be4R33,Reference Bug (RB),C#,Agent Core,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Crash (CR),Semantic Kernel,"BT:  Incorrect reference of module
+RC: File import controll flow module incorrect
+ET: For incorrect reference, it should throw namespace not found error",OllamaEmbeddingModel.cs,var response = await Provider.Api.GenerateEmbeddingAsync(new GenerateEmbeddingRequest,var response = await Provider.Api.Embeddings.GenerateEmbeddingAsync(new GenerateEmbeddingRequest
+https://github.com/LittleLittleCloud/Agent-ChatRoom/commit/a8fe2e481e486fdabe1b004fcbe2242af2fafc1b#diff-0523505d5dfaf08d485972d563e12c4dbdf6d74d3d450e6216a0c83a241d6969R4-L358,Argument Bug (AB),C#,Unknown,API Misuse-Invalid API Arguments (AM.IAA),Crash (CR),Semantic Kernel,"BT: Incorrect argument passed to CreateChannel method
+RC: API called with incorrect parameter
+ET: Should thow ArgumentBug",ConsoleChatRoomService.cs,await room.CreateChannel(new ChannelInfo(channelName));,await room.CreateChannel(channelName);
+https://github.com/LittleLittleCloud/Agent-ChatRoom/commit/a8fe2e481e486fdabe1b004fcbe2242af2fafc1b#diff-cdeacd754a8b6904ca5528e1655ca08ec44fa7441a10e80ffdc3395f0d015c29R25-R56,Configuration Bug (CB),C#,Unknown,Incorrect or Missing Parameter Value-Incorrect Value (IMP.IV),Unknown (UN),Semantic Kernel,"BT:  JoinRoom configured incorrectly
+RC: JoinRoom got incorrect parameter value
+ET: Not specified ",RoomGrain.cs," await ob.JoinRoom(agent, this.GetPrimaryKeyString());"," await ob.JoinRoom(agent, this.GetPrimaryKeyString());"
+https://github.com/LittleLittleCloud/Agent-ChatRoom/commit/a8fe2e481e486fdabe1b004fcbe2242af2fafc1b#diff-b3074baecba2094a4e7ff0b44b56bf33d749eb69db93c929b4d0ab2c8173d034R80-R238,Argument Bug (AB),C#,Unknown,API Misuse-Invalid API Arguments (AM.IAA),Crash (CR),Semantic Kernel,"BT: Incorrect arguemt passed to the method
+RC: CreateChannel got incorrect parameter
+ET: Should thow ArgumentBug",RoomGrainTests.cs,await roomGrain.CreateChannel(testChannel);,await roomGrain.CreateChannel(testChannel.Name);
+https://github.com/kbeaugrand/SemanticKernel.Agents.DatabaseAgent/commit/6e53014e32d4e8d99b44a0590fae6e8fd85abb2f,Logic Bug (LB),C#,Agent Core,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Crash (CR),Semantic Kernel,"BT:  Incorrect code/logical component for invoking llm
+RC: Incorrectly implemented message invoke 
+ET: Operation leads to timeout which is not handled leading to crash",DatabaseKernelAgentExtension.cs,"var kernelArguments = new KernelArguments
+                            {
+                                { ""prompt"", message }
+                            };
+
+                            var responses = await agent.Kernel.Plugins[nameof(DatabasePlugin)][""ExecuteQuery""]
+                                                        .InvokeAsync(kernel: agent.Kernel, kernelArguments);","var responses = agent.InvokeAsync(new ChatMessageContent(AuthorRole.User, message.ToString()), thread: null)
+                                                    .ConfigureAwait(false);"
+https://github.com/tryAGI/LangChain/commit/3ca66f40b78a813e24e62a77d71b8705d1feee2f#diff-1f2f85a579091acf501cc86aa2042a75d341da34234aa1c12dda15d5319094f0R21-R124,Logic Bug (LB),C#,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Incorrect Output (IO),Semantic Kernel,"BT: Logical check condition incorrect
+RC: Logical component not correctly implemented
+ET: Faulty logic will lead to incorrect value being returned",MarkdownHeaderTextSplitter.cs,"if (line.StartsWith(header, StringComparison.Ordinal) && line[header.Length] == ' ')","if (line.Trim().StartsWith(header, StringComparison.Ordinal) && line[header.Length] == ' ')"
+https://github.com/tryAGI/LangChain/commit/2dde62adcb5d7f53124745739dd63c91879f739f#diff-bfe17f09e13a66d955e682d7243269adc079b0460326fa45172de7c219133ba6R11,Configuration Bug (CB),C#,Agent Core,Incorrect or Missing Parameter Value-Incorrect Value (IMP.IV),Crash (CR),Semantic Kernel,"BT:  customEndpoint incorrectly configured
+RC: incorrect customEndpoint parameter passed
+ET: Should throw invalid request error",AnyscaleProvider.cs,"public AnyscaleProvider(string apiKey) : base(apiKey, customEndpoint: ""api.endpoints.anyscale.com"")","public AnyscaleProvider(string apiKey) : base(apiKey, customEndpoint: ""https://api.endpoints.anyscale.com/v1"")"
+https://github.com/kbeaugrand/SemanticKernel.Connectors.Memory.SqlServer/commit/b6b1c835d15b3b8f1a84b611aa415aa7e2c8d833#diff-e13a44fbf680b5a6cc0058276ef7b83f1a9262458b00b7b3a69e9dbfc2c2f3cfR45,Initialization Bug (IB),C#,Tools,API Misuse-Invalid API Arguments (AM.IAA),Crash (CR),Semantic Kernel,"BT: _dataSource initialized incorrectly
+RC: Incorrect attribute type assed in second arguement
+ET: Should thow Attribute Error",SqlServerMemoryStoreTests.cs," this._dataSource = new SqlServerClient(connectionString, ""dbo"");","this._dataSource = new SqlServerClient(connectionString, new SqlServerConfig
+        {
+            Schema = ""ai""
+        });"
+https://github.com/kbeaugrand/SemanticKernel.Connectors.Memory.SqlServer/commit/b6b1c835d15b3b8f1a84b611aa415aa7e2c8d833#diff-4325731b4fde7d149a1c410793a3746e8506a3e8ee3f7eab6241542a52e1cdcbR28-L38,Initialization Bug (IB),C#,Tools,API Misuse-Invalid API Arguments (AM.IAA),Crash (CR),Semantic Kernel,"BT: client initialized incorrectly
+RC: Incorrect attribute type assed in second arguement
+ET: Should thow Attribute Error",SqlServerMemoryStore.cs,"var client = new SqlServerClient(connectionString, schema);","var client = new SqlServerClient(connectionString, config ?? new());"
+https://github.com/SciSharp/LLamaSharp/commit/36c71abcfb7c796bd54398fb4bc19f925ac7817c#diff-dbdeaa03322ada338657281722176286ce802c6f8c977dd261efd24abb9cd3c7R101-R113,API Bug (APIB),C#,Tools,API Misuse-Wrong API Context (AM.WAC),Incorrect Output (IO),Semantic Kernel,"BT: Incorrect API used
+RC: Incorrect understanding of ToString output
+ET: Returns incorrect output",LLamaContext.cs,return decoder.ToString();,return decoder.Read();
+https://github.com/LittleLittleCloud/Agent-ChatRoom/commit/8d636418284b2d27ded8c90d033c3b204da0f477#diff-8948485469dac743f97f08615db927fd02d4cfc3456db5928f2943d020d50364R49,Configuration Bug (CB),C#,Agent Core,Incorrect or Missing Parameter Value-Missing Value (IMP.MV),Unknown (UN),Semantic Kernel,"BT: AgentFactory.CreateIssueHelperAgent incorrectly configured
+RC: Missed two parameter values (passed default value)
+ET: Not specified",IssueHelperAgentTests.cs,"var issueHelperAgent = AgentFactory.CreateIssueHelperAgent(openaiClient, aoaiDeployName!, ghClient);"," var issueHelperAgent = AgentFactory.CreateIssueHelperAgent(openaiClient, aoaiDeployName!, ghClient, ""LittleLittleCloud"", ""Agent-ChatRoom"");"
+https://github.com/SciSharp/LLamaSharp/commit/2abc2ecfca12f8465bd4aa9840a279a83aca7348,Logic Bug (LB),C#,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Warning (WR),Semantic Kernel,"BT: Null warning supression warning not added
+RC: Incorrectly implemented ModelParams call
+ET: Null forgiving operator suppresses warning",StatelessChatService.cs,"var @params = new Common.ModelParams(configuration[""ModelPath""])","var @params = new Common.ModelParams(configuration[""ModelPath""]!)"
+https://github.com/SciSharp/LLamaSharp/commit/9fe878ae1fb392e2b9f648a89f843b2a13c0dd1a#diff-2abd2523adbfb6287d9e1c6171c4cd247933b64f217fa81483e222af07dcf924L55-R55,Initialization Bug (IB),C#,Agent Core,Incorrect or Missing Parameter Value-Missing Value (IMP.MV),Unknown (UN),Semantic Kernel,"BT: batch initialized incorrectly
+RC: LLamaBatch invoked with default parameter
+ET: Not specified",BatchedDecoding.cs,var batch = new LLamaBatch(),var batch = new LLamaBatch(1)
+https://github.com/tryAGI/LangChain/commit/dbd589338790df0052a2e166a4df5239a409f443#diff-85eaa4133c6c619415faaff685a174e526e240e3b6dc8d1d211d68301110acb9L49-R110,Initialization Bug (IB),C#,Agent Core,Incorrect or Missing Control Flow-Missing Flow (IMCF.MF),Unknown (UN),Semantic Kernel,"BT:  returnValues incorectly initialized
+RC: ConfigureAwait method not invoked
+ET: Not specified",BaseChain.cs,var returnValues = await CallAsync(values);,var returnValues = await CallAsync(values).ConfigureAwait(false);
+https://github.com/kbeaugrand/SemanticKernel.Agents.DatabaseAgent/commit/7e89f6402f996aa76a031c4c3ded991bd542e330,Logic Bug (LB),C#,Tools,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Unknown (UN),Semantic Kernel,"BT: callToolResponse incorrectly invoked
+RC: Incorrect flow of adding items 
+ET: Not specified",DatabaseKernelAgentExtension.cs," callToolResponse.Content.Add(new()
+                            {
+                                callToolResponse.Content.Add(new()
+                                {
+                                    Type = ""text"",
+                                    Text = response.Content
+                                });
+                            }
+                             ","callToolResponse.Content.Add(new()
+                                Type = ""text"",
+                                Text = responses.GetValue<string>()
+                            });"
+https://github.com/SciSharp/LLamaSharp/commit/0d40338692055d1e38544fe86f48585210ff3f4f,Initialization Bug (IB),C#,Tools,Incorrect or Missing Parameter Value-Incorrect Value (IMP.IV),Unknown (UN),Semantic Kernel,"BT: params incorrectly initialized
+RC: MaxTokens got incorrect values
+ET: Not specified ",StatelessExecutorTest.cs,"var @params = new InferenceParams()
+            {
+                MaxTokens = 100,
+                TokensKeep = question.Length,
+            };","var @params = new InferenceParams()
+            {
+                MaxTokens = 80,
+                TokensKeep = question.Length,
+            };"
+https://github.com/SciSharp/LLamaSharp/commit/0d40338692055d1e38544fe86f48585210ff3f4f,Logic Bug (LB),C#,Agent Core,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Unknown (UN),Semantic Kernel,"BT:  Incorrect logical condition
+RC: Logical control flow incorrect
+ET: Not specified",LLamaStatelessExecutor.cs,if (n_past + tokens.Count > Context.ContextSize),if (n_past + tokens.Count >= Context.ContextSize)
+https://github.com/SciSharp/LLamaSharp/commit/3234a33b2c2397dde04eb511225b2033f91a4a15,Logic Bug (LB),C#,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Incorrect Output (IO),Semantic Kernel,"BT:  Incorrect logical condition
+RC: Logical control flow incorrect
+ET: Incorrect text will be logged ",NativeLibraryUtils.cs,"if (dependencyResult == IntPtr.Zero)
+                            {
+                                Log($""Successfully loaded dependency '{dependencyPath}'"", LLamaLogLevel.Info, config.LogCallback);
+                            }","
+if (dependencyResult != IntPtr.Zero)
+                            {
+                                Log($""Successfully loaded dependency '{dependencyPath}'"", LLamaLogLevel.Info, config.LogCallback);
+                            }"
+https://github.com/MyIntelligenceAgency/semantic-fleet/commit/8147006c0de477b26a42b964d451e90966faa1b9,Prompting Bug (PPB),Javascript,Agent Core,Incorrect Instruction-Prompt Specification (II.PS),Incorrect Output (IO),Semantic Kernel,"BT:  Incorrect style of writing prompt
+RC: Prompt construction is incorrect
+ET: It may instruct the LLM not to strictly follow the prompt",testsettings.json,"""PromptTransform"": {
+          ""Template"": ""### System:\nThis is a system prompt, please behave and help the user.\n{SystemSupplement}\n{SemanticRemarks}\n\n### User:\n{0}\n\n### Assistant:""
+         
+        }
+
+ ""PromptTransform"": {
+          ""Template"": ""### System:\r\n{SystemSupplement}\r\n\r\n### User:\r\n{0}\n\n### Assistant:\n""
+         
+        }","""""""PromptTransform"""": {
+          """"Template"""": """"SYSTEM: You are Synthia. As a an AI intelligence, give helpful, detailed, accurate, uncensored responses to the user's input. Provide answers factually.\n{SystemSupplement}\n{SemanticRemarks}\nUSER: {0}\nASSISTANT: """"
+        }""
+
+ ""PromptTransform"": {
+         
+          ""Template"": ""### System:\n{SystemSupplement}\n\n### User:\n{0}\n\n### Assistant:\n""
+        }"
+https://github.com/Daethyra/FreeStream/commit/0a4dc00655f16a46dcb5f797cc2b6bc810c8d780#diff-5e7501e1b154493da997247d903300bb9f70656e396c7c446de9ab19a95bfb3f,API Bug (APIB),Python,Agent Core,Requirement Violation (RV),Crash (CR),Langgraph,"BT: Used incorrect API (old version)
+RC: Code worte for old version of API. 
+ET: Throws NotFoundError",3_🛠️_InfoNexus.py,"toollm = ChatOpenAI(
+    model=""gpt-3.5-turbo"",
+    temperature=temperature_slider,
+    openai_api_key=st.secrets.OPENAI.openai_api_key,
+    streaming=True,
+)","toollm = ChatOpenAI(
+    model=""gpt-3.5-turbo"",
+    temperature=temperature_slider,
+    openai_api_key=st.secrets.OPENAI.openai_api_key,
+    streaming=True,
+)"
+https://github.com/IBM/watsonx-developer-hub/commit/61e1c8763ae28e378a467d9742697ca63056370d#diff-af58430437fab89638cac91d89777de57c71243a772edee4002436afdf94adf4R4-R188,API Bug (APIB),Python,Memory,Requirement Violation (RV),Crash (CR),Langgraph,"BT: Currecnt create_react_agent version has no attribute named create_react_agent
+RC: Langchain version (requirement) issue
+ET: Should throw AttributeError
+ER: create_react_agent https://python.langchain.com/api_reference/langchain/agents/langchain.agents.react.agent.create_react_agent.html",ai_service.py,"return create_react_agent(
+            chat, tools=TOOLS, checkpointer=memory, state_modifier=system_prompt
+        )","return create_react_agent(
+           chat, tools=TOOLS, state_modifier=system_prompt
+        )"
+https://github.com/mindify-ai/CURA/commit/a776fb88eba69b8d46e33eb3527b065b06b549f7#diff-ad16ea6092f9cd464604ac619cb23ae94cdf50ac901a005e50cf9ca59a003628R166-R276,Configuration Bug (CB),Python,Agent Core,Incorrect or Missing Parameter Value-Incorrect Value (IMP.IV),Unknown (UN),Langgraph,"BT: config parameter incorrectly configured
+RC: recursion_limit has incorrect value
+ET: Not specified",prediction.py,"graph.invoke(init_state, config={""recursion_limit"": 18})","graph.invoke(init_state, config={""recursion_limit"": 20})"
+https://github.com/srtab/daiv/commit/a1555d02648c9c9f12b3c5281b437ce850c663d5#diff-009ec18643f217271e6d0f09cca35d5d82963bb0590acdc4bf370cd8251a50edR11-R13,Reference Bug (RB),Python,Planning,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Crash (CR),Langgraph,"BT:  ReviewAddressorAgent referred to incorrect module
+RC: Incorrect controll flow for import
+ET: Should Throw  ImportError",tasks.py,from automation.graphs.review_adressor.agent import ReviewAdressorAgent,from automation.graphs.review_addressor.agent import ReviewAddressorAgent
+https://github.com/shamspias/langchain-chat/commit/d24b4eb52b9d3fbbe15dc843013a1ecb12b559b6,Argument Bug (AB),Python,Tools,API Misuse-Invalid API Arguments (AM.IAA),Crash (CR),Langgraph,"BT:  Incorrect API argument passed
+RC: VectorstoreIndexCreator does not take API key
+ET: Should throw ArgumentBug
+ER: VectorstoreIndexCreator https://api.python.langchain.com/en/latest/indexes/langchain.indexes.vectorstore.VectorstoreIndexCreator.html",‎chroma_test.py,index_creator = VectorstoreIndexCreator(openai_api_key=OPENAI_API_KEY),index_creator = VectorstoreIndexCreator()
+https://github.com/kryvokhyzha/langgraph-agent-toolkit/commit/928c15ba2e42ce7d9fefbb089380abb1784c20ce,Configuration Bug (CB),Python,Agent Core,Incorrect or Missing Parameter Value-Incorrect Value (IMP.IV),Unknown (UN),Langgraph,"BT: AgentClient incorrectly initialized
+RC: Incorrect parameter value for agent 
+ET: Not specified",test_docker_e2e.py,"client = AgentClient(""http://0.0.0.0"", agent=""chatbot"")","client = AgentClient(""http://0.0.0.0"", agent=""chatbot-agent"")"
+https://github.com/kyaukyuai/gpt-all-star/commit/1467ceef25fbe5968e204f06091ff785ec40b6d1#diff-3f7bbc2210e51e5a1173151a751d31edf96bbce63f0222b8d8468333c6bac27fR58-R61,Parsing Bug (PRB),Python,Planning,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Incorrect Output (IO),Langgraph,"BT:  Issue in the perser
+RC: Perser logic incorrectly implemented
+ET: Return message without correctly parsing",chain.py,"return {""next"": self.remove_quotes(message.next)}","next = self.remove_quotes(message.next)
+            if next in member_names:
+                return {""next"": next}
+            return {""next"": ""FINISH""}"
+https://github.com/josefdc/ImageAgent/commit/844cc12a9cb041a2fd5e479c56d505fb5945fe69,Model Bug (MB),Python,Agent Core,Component Mismatch (CM),Incorrect Output (IO),Langgraph,"BT:  Incorrect model used
+RC: Incorrect LLM component used
+ET: Return different output",agent_graph.py,"model = ChatOpenAI(model=""gpt-4o-mini"", temperature=0, api_key=api_key, max_retries=1, timeout=45)","model = ChatOpenAI(model=""gpt-4o-2024-11-20"", temperature=0, api_key=api_key, max_retries=1, timeout=45)"
+https://github.com/shamspias/langchain-chat/commit/bba1c6963e884e114e184576395b041f6756e25f,Prompting Bug (PPB),Python,Agent Core,Incorrect Instruction-Prompt Specification (II.PS),Incorrect Output (IO),Langgraph,"BT:  Issue in the prompt
+RC: Prompt constraction incorrect
+ET: Incorrect prompt will return unexpected output",‎with_faiss.py,"messages = [
+    SystemMessage(
+        content=""You are a helpful assistant that know everything about langchain.You can also answer questions about ""
+                ""the langchain library. You write code with proper explanation and understand the code bug and can ""
+                ""fixed it or give solution"")
+        
+]","messages = [
+  
+        content=""You know everything about langchain and you can give any solution and write code for any problem."")
+]"
+https://github.com/kaymen99/Upwork-AI-jobs-applier/commit/97b115891cd678a0b15a08ff40de7996d289b1bf,Model Bug (MB),Python,Agent Core,Component Mismatch (CM),Incorrect Output (IO),Langgraph,"BT:  Incorrect model used
+RC: Incorrect LLM component used
+ET: Return different output",,"results = await ainvoke_llm(
+            system_prompt=score_jobs_prompt,
+            user_message=f""Evaluate these Jobs:\n\n{jobs_list}"",
+            model=""google/gemini-1.5-flash"",
+            response_format=JobScores
+        )","results = await ainvoke_llm(
+            system_prompt=score_jobs_prompt,
+            user_message=f""Evaluate these Jobs:\n\n{jobs_list}"",
+            model=""openai/gpt-4o-mini"",
+            response_format=JobScores
+        )"
+https://github.com/Mhijazi16/Autopilot/commit/64c26fb84b6f9ee5b4d3d9a6e3b597b0fb2ab0b3,Initialization Bug (IB),Python,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Silent Fail (SF),Langgraph,"BT: newTaskID initialized incorrectly
+RC:  Incorrect logical flow for using the same id for all instances
+ET: Will not generate newTask with different ID. (all instances will have the same id)",Tasks.js,"const newTaskId = -1;
+const newTask = {
+      id: newTaskId,
+      name: `Task Name`,
+      commands: [
+        {
+          id: newTaskId + 1,
+          name: ""default"",
+          text: ""command"",
+          icon: defaultIcon,
+          status: ""idle"",
+        },
+      ],
+    };","const newTaskId = tasks.length + 1;
+const newTask = {
+      id: newTaskId,
+      name: `Task Name`,
+      commands: [
+        {
+          id: newTaskId + 1,
+          name: ""default"",
+          text: ""command"",
+          icon: defaultIcon,
+          status: ""idle"",
+        },
+      ],
+    };"
+https://github.com/kyaukyuai/gpt-all-star/commit/1803420ffd2186686705b0461c7d8e638c7eb579,Initialization Bug (IB),Python,Planning,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Incorrect Output (IO),Langgraph,"BT: members initialized incorrectly
+RC: Incorrect logic of passing members' name/ members' role name
+ET: Incorrect value passed to the LLM call lead to incorrect output",chain.py,members = [member.name for member in members],members = [member.role.name for member in members]
+multi_agent_collaboration_graph.py,Configuration Bug (CB),Python,Unknown,Incorrect or Missing Parameter Value-Incorrect Value (IMP.IV),Unknown (UN),Langgraph,"BT:  add_edge incorrectly configured
+RC:add_edge called with incorrect value
+ET: Not specified",multi_agent_collaboration_graph.py,"self._state_graph.add_edge(agent.name, SUPERVISOR_NAME)",
+https://github.com/kyaukyuai/gpt-all-star/commit/1803420ffd2186686705b0461c7d8e638c7eb579,Initialization Bug (IB),Python,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Incorrect Output (IO),Langgraph,"BT: conditional_map initialized incorrectly
+RC: Incorrect logic of passing members' name/ members' role name
+ET: Incorrect value passed to the LLM call lead to incorrect output",multi_agent_collaboration_graph.py," conditional_map = {agent.name: agent.name for agent in self.agents}
+        conditional_map[""FINISH""] = END
+        self._state_graph.add_conditional_edges(
+            SUPERVISOR_NAME, lambda state: state[""next""], conditional_map
+        )"," conditional_map = {agent.role.name: agent.role.name for agent in self.agents}
+        conditional_map[""FINISH""] = END
+        self._state_graph.add_conditional_edges(
+            SUPERVISOR_NAME, lambda state: state[""next""], conditional_map
+        )"
+https://github.com/aibtcdev/aibtcdev-backend/commit/62f3f3aacc67f40833641c6251b6fbf50fc5d5eb,Logic Bug (LB),Python,Agent Core,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Unknown (UN),Langgraph,"BT: Incorrect async logic for specific operation
+RC: Logical flow incorrect
+ET: Not specified",crew.py,"result = await execute_crew(account_index, crew_id, input_str)",
+https://github.com/dcflorencio/langgraph-reagent/commit/00d38c1d44ca83825498c325e6e09b951d2b4e46,Argument Bug (AB),Python,Agent Core,API Misuse-Invalid API Arguments (AM.IAA),Crash (CR),Langgraph,"BT:  api_key arguement not passed
+RC: LLM api not invoked with correct parameters
+ET: It should throw AuthenticationError for not setting key in env or passing in params",model.py,"return ChatAnthropic(temperature=0, model_name=""claude-3-5-sonnet-20240620"")","return ChatAnthropic(temperature=0, model_name=""claude-3-5-sonnet-20240620"",api_key=anthropic_api_key)"
+https://github.com/ernesttan1976/mylangchain/commit/ed16d023d172db2d11bc7b83c1ff6cfc5ef8267e,Prompting Bug (PPB),Javascript,Agent Core,Incorrect Instruction-Prompt Specification (II.PS),Incorrect Output (IO),LangChain-js,"BT: Issues in the prompt
+RC: Prompt construction incorrect
+ET: Incorrect prompt details makes LLM return incorrect output",prompts.js,"const codeExplainPrompt = `Explain each line of the code and show url links to external libraries. And include glossary of terms.
+Format your reply like this, preserve the line spacing:
+<details><summary>[line number]:code with preserve formatting</summary><p>explanation for code</details>
+const codeExplainPrompt = `Explain each line of the code and show url links to external libraries. And include glossary of terms.\n
+Format your reply like this, preserve the line spacing:\n
+<pre><details><summary>[line number]:code with preserve formatting</summary>
+<p>explanation for code</p></details>\n</pre>
+
+functions
+explanation for functions
+links
+terms glossary
+
+Divide the code into functions and summarise the purpose and use case of each function. Step by step explain each function of this code.
+<details><summary>[1]: import pandas as pd</summary><p>This line imports the pandas library and assigns it the alias 'pd'. Pandas is a powerful data manipulation library in Python, used for data analysis and manipulation. It provides data structures and functions to efficiently handle and analyze structured data.</p></details>
+<details><summary>[4:5]:[4]: def calculate_mean(data): \n
+ </summary>[5]:     return np.mean(data) \n
+ <p>This function calculates the mean (average) of a given dataset. It takes a single parameter 'data', which represents the dataset. It uses the 'np.mean()' function from the numpy library to calculate the mean of the data and returns the result.</p></details>","const codeExplainPrompt = `Explain each line of the code and show url links to external libraries. And include glossary of terms.\n
+Format your reply like this, preserve the line spacing:\n
+<pre><details><summary>[line number]:code with preserve formatting</summary>
+<p>explanation for code</p></details>\n</pre>
+## functions\n
+## explanation for functions\n
+## links\n
+## terms glossary\n
+<pre><details><summary>[1]: import pandas as pd</summary>This line imports the pandas library and assigns it the alias 'pd'. Pandas is a powerful data manipulation library in Python, used for data analysis and manipulation. \nIt provides data structures and functions to efficiently handle and analyze structured data.</details></pre>
+<pre><details><summary>[4]: def calculate_mean(data):</summary>
+<p>This function calculates the mean (average) of a given dataset. It takes a single parameter 'data', which represents the dataset. </p></details></pre>
+<pre><details><summary>[5]:    return np.mean(data)</summary>
+<p>The 'np.mean()' function from the numpy library calculates the mean of the data and returns the result.</p></details>\n</pre>"
+https://github.com/overexpload/thalia/commit/612c545d7deb88656f349c989dbd7f646933070d,Configuration Bug (CB),Javascript,Tools,Incorrect or Missing Parameter Value-Incorrect Value (IMP.IV),Unknown (UN),LangChain-js,"BT: Mongodb connected (configured) incorrectly 
+RC: Connect method passed with unexpected optional parameter
+ET: Not specified ",mongodb.js,"mongoose.connect(process.env.DB_URL, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    }).then(() => console.log('Connected to db')).catch((e) => {
+        console.error(e.message);
+    })","mongoose.connect(process.env.DB_URL).then(() => console.log('Connected to db')).catch((e) => {
+        console.error(e.message);
+    })"
+https://github.com/galaxyxyz5/ai-report-generation/commit/7a13518beca0a2f370163336788960295b1795be,Initialization Bug (IB),Javascript,Unknown,Incorrect or Missing Parameter Value-Incorrect Value (IMP.IV),Unknown (UN),LangChain-js,"BT: newSocket initialized incorrectly
+RC: Incorrect arguemnt passed to connect socket
+ET: For incorrect path, it should throw 404 error",SocketContext.jsx,const newSocket = io(`${import.meta.env.VITE_APP_SOCKET_URL}`);,const newSocket = io(`${import.meta.env.VITE_PUBLIC_URL}`);
+https://github.com/AnchoringAI/anchoring-ai/commit/c80c8fe6639ef94d88fbaa2edd3f0ffed355aa96,Logic Bug (LB),Javascript,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Incorrect Output (IO),LangChain-js,"BT: Incorrect item returned
+RC:  Return steatement flow is incorrect
+ET: Code reurns promise instead of the output after execution",TagParser.js," async run() {
+        return handleRunClick();
+      }"," async run() {
+        return await handleRunClick();
+      }"
+https://github.com/IroncladDev/LangChain.js-LLM-Template/commit/783309d02b0c2a8ee61ee5bc27351e8c7804cee8,Argument Bug (AB),Javascript,Tools,API Misuse-Invalid API Arguments (AM.IAA),Crash (CR),LangChain-js,"BT:  API key argument not passed
+RC: OpenAIEmbeddings invoked without proper arguements
+ET: Calling without API will result Authentication",generateResponse.js,"const store = await HNSWLib.load(""vectorStore"", new OpenAIEmbeddings());","const store = await HNSWLib.load(""vectorStore"", new OpenAIEmbeddings({
+  openAIApiKey: process.env.OPENAI_API_KEY
+}))"
+https://github.com/SamurAIGPT/EmbedAI/commit/18b9dc6e8795300a811682845398f7586411624b,Argument Bug (AB),Python,Agent Core,Incorrect or Missing Control Flow-Missing Flow (IMCF.MF),Crash (CR),LangChain-js,"BT:  from_chain_type got none instances in place of LLM
+RC: Did not add checker for none values 
+ET: Throws TypeError",privateGPT.py,"
+    qa = RetrievalQA.from_chain_type(llm=llm, chain_type=""""stuff"""", retriever=retriever, return_source_documents=True)""","if llm==None:
+        return ""Model not downloaded"", 400    
+    qa = RetrievalQA.from_chain_type(llm=llm, chain_type=""stuff"", retriever=retriever, return_source_documents=True)"
+https://github.com/sarahelshark/LangChainChatBot/commit/da5754aa48787e7e72a09ac26e5a112b6180b89e,Logic Bug (LB),Python,Memory,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Stateless Interaction (SI),LangChain-js,"BT: Incorrect logical condition
+RC: Controll flow statement incorrect
+ET: Logic to store history corrupted",‎main.py,"if model_choice == 'chatgpt':
+                vectorize_and_store_chat_history(chatgpt_history, 'chatgpt')
+                chatgpt_history = [system_message]","if model_choice == 'chatgpt' and chatgpt_history:
+                vectorize_and_store_chat_history(chatgpt_history, 'chatgpt')
+                chatgpt_history = [system_message]"
+https://github.com/MADHURYAHAIT/DocuScholar/commit/ac2072222c58bb8bb49e5c2cc6167b31fd708452,Prompting Bug (PPB),Python,Agent Core,Incorrect Instruction-Prompt Specification (II.PS),Incorrect Output (IO),LangChain-js,"BT:  Incorrect prompt details
+RC:  Prompt instruction incomplete
+ET: Incorrect prompt generated wrong output",app.py,"prompt_template = """"""
+    Answer the question as detailed as possible from the provided context and knowledge out of it, make sure to provide all the details and try to include emojis, if the answer is not in
+    provided context just say, ""answer is not available in the context, Please ask a suitable question"", don't provide the wrong answer\n\n
+    Context:\n {context}?\n
+    Question: \n{question}\n","prompt_template = """"""
+    Answer the question as detailed as possible from the provided context, make sure to provide all the details, if the answer is not in
+    provided context just say, ""answer is not available in the context, Please ask a suitable question"", don't provide the wrong answer\n\n
+    Context:\n {context}?\n
+    Question: \n{question}\n"
+https://github.com/ahmadbasyouni10/ctp-hackathon-24/commit/a6653306838b1ad7d9a278f3f7dbf9971c7a7bd2,Configuration Bug (CB),Javascript,Agent Core,Incorrect or Missing Parameter Value-Incorrect Value (IMP.IV),Crash (CR),LangChain-js,"BT:  Posted to incorrect URL (endpoint misconfigured)
+RC: Passed incorrect endpoint
+ET: Should  throw 404 Not Found error",‎index.js,"app.post(""/api/chat-openai"", chatOpenAIHandler);","app.post(""/api/chat"", chatOpenAIHandler);"
+https://github.com/freedomson/midinho/commit/bd62727bc3a15dd00e2ed6aebed3ba53e15e4551,Configuration Bug (CB),Python,Agent Core,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Crash (CR),LangChain-js,"BT: pyfetch parameter misconfigured
+RC: Incorrect path passed to pyfetch
+ET: Throw FileNotFound Error",app.js,"response = await pyfetch(""./python/llm.py"")","response = await pyfetch(""/python/llm.py"")"
+https://github.com/Prayag2003/ethereum-bots-supermind-hackathon/commit/b1b2a195de34b9b79841ed26d5650658b8cdb49f,Configuration Bug (CB),Javascript,Agent Core,Incorrect or Missing Parameter Value-Incorrect Value (IMP.IV),Crash (CR),LangChain-js,"BT:  Endpoint misconfigured
+RC: fetch got incorrect parameter value
+ET: Incorrect endpoint shoud throw 404 not found error",AnalyticsModule.jsx,"const res = await fetch(""http://localhost:8000/query"", {
+				method: ""POST"",
+				headers: { ""Content-Type"": ""application/json"" },
+				body: JSON.stringify({
+					post_type: postType,
+					query,
+				}),
+			});","const res = await fetch(
+				""http://65.0.124.242:8000/query"",
+				{
+					method: ""POST"",
+					headers: {
+						""Content-Type"":
+							""application/json"",
+					},
+					body: JSON.stringify({
+						post_type: postType,
+						query,
+					}),
+				}
+			);"
+https://github.com/Abhi-Jeeet/PDFy/commit/ac91f69de821c89aea9550aa7e040e963feef41c,Model Bug (MB),Javascript,Tools,Component Mismatch (CM),Unknown (UN),LangChain-js,"BT:  Incorrect model selected
+RC: Incorrect embedding component used
+ET: Not specified",pdf_processor.py,"embeddings = OllamaEmbeddings(model=""llama3.2"")  
+vector_store = FAISS.from_texts(chunks, embeddings)","embeddings = OllamaEmbeddings(model=""deepseek-coder"") 
+vector_store = FAISS.from_texts(chunks, embeddings)"
+https://github.com/farhan0167/otto-m8/commit/77348aa2c43a230203672ffde88b449db81c395a,Reference Bug (RB),Javascript,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Crash (CR),LangChain-js,"BT:  createRunConfigForNode reference is incorrect
+RC: Incorrect controll flow of import
+ET: Throw 'Cannot find module' error",InstantRun.js,import { createRunConfigForNode } from '../Workflows/Utils/CreateRunConfig';,import { createRunConfigForNode } from '../Pages/Workflows/Utils/CreateRunConfig';
+https://github.com/dourian/UniGPT/commit/0d8ddca7b7ca65ab629f1e1ee609be4233e8091a,Configuration Bug (CB),Javascript,Agent Core,Incorrect or Missing Parameter Value-Incorrect Value (IMP.IV),Crash (CR),LangChain-js,"BT:  queryQuestion parameter misconfigured
+RC:  incorrect (empty depending on the flow) key passed
+ET: Should throw authenticationerror",app.js,"const answer = await queryQuestion(pclient, indexName, promptedQuestion, res, useStream, openAiKey)","    const answer = await queryQuestion(pclient, indexName, promptedQuestion, res, useStream, key)"
+https://github.com/rockbite/localforge/commit/7f1ae59d0ff65bd5fdba68e794911c64e1575154,Initialization Bug (IB),Javascript,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Crash (CR),LangChain-js,"BT: opts initialized with promises instead of value
+RC:  Incorrect flow of invling async function
+ET: It will throw typeError while invoking editClient",index.js,"let opts = this.makeOptsFromUrl(url);
+await this.mcpLibrary.editClient(alias, opts);"," let opts = await this.makeOptsFromUrl(url);
+await this.mcpLibrary.editClient(alias, opts);"
+https://github.com/rockbite/localforge/commit/25c8a18d611a42cbd2e607ec903276042291fed3,API Bug (APIB),Javascript,Agent Core,Requirement Violation (RV),Crash (CR),LangChain-js,"BT: API version conflict
+RC:  Used code of old version of OpeanAi call
+ET: Throw AttributeErro",,"let text = response.then((completion) => completion.choices?.[0]?.message?.content || '');
+
+    return text;",return response.content;
+https://github.com/aibtcdev/ai-agent-crew/commit/96bc2d84759ee076e80e9968212c9eb750acd97a,Reference Bug (RB),Python,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Crash (CR),CrewAI,"BT: Incorrect reference of library
+RC: Incorrect control flow implementation
+ET: Throws ImportError",aibtc.py,from bun_run import BunScriptRunner,from .bun_runner import BunScriptRunner
+https://github.com/alexfazio/OpenPlexity-Pages/commit/9cdb2952641225535be10b890e338a55c758c0b6#diff-4eae4a345f6119e33f20a1ae8a14df324722740548de5f89edf324788259310bR9-R44,Logic Bug (LB),Python,Other,Others,Empty Response (ER),CrewAI,"BT:  Incorrect logic created empty text box
+RC: Not related to LLM 
+ET: The previous code would create an empty text box",app.py,"example_tone = st.text_area(""Example Tone"")
+","example_tone = st.text_area(""Example Tone"", prompt_helper.get_global_prompt_elem(""example_tone""))"
+https://github.com/startino/aitino/commit/e68077f1da17d0f16c25d13800c909001b216325,Initialization Bug (IB),Python,Tools,API Misuse-Invalid API Arguments (AM.IAA),Crash (CR),CrewAI,"BT: config variable initialized with incorrect key
+RC: llm_config gets incorrect value parameter
+ET: It should throw KeyError",crew.py,"if tool_schemas:
+    config[""functions""] = tool_schemas
+            
+system_message = f""""""{agent.role}\n\n{agent.system_message}. If you write a program, give the program to the admin. """"""
+agent_instance = autogen.AssistantAgent(
+                name=self._format_agent_name(agent),
+                system_message=system_message,
+                description=formatted_descriptions[agent.id][0],
+                # could add something to concatenate all strings in description list for a given agent - Leon
+                llm_config=config,
+            )","if tool_schemas:
+    config[""tools""] = tool_schemas
+system_message = f""""""{agent.role}\n\n{agent.system_message}. If you write a program, give the program to the admin. """"""
+
+agent_instance = autogen.AssistantAgent(
+                name=self._format_agent_name(agent),
+                system_message=system_message,
+                description=formatted_descriptions[agent.id][0],
+                # could add something to concatenate all strings in description list for a given agent - Leon
+                llm_config=config,
+            )"
+https://github.com/yanniedog/Autocrew/commit/7a5b47b1ede4cc7eaf96a84e08283b0bb0ce42f1#diff-935bc67832a22823701c35975421947be81615771e83d7ca168792058a15a347R150-R212,Prompting Bug (PPB),Python,Agent Core,Incorrect Instruction-Prompt Specification (II.PS),Incorrect Output (IO),CrewAI,"BT:  Prompt not detailed
+RC: Incorrect instruction provided
+ET: Does not provide more detailed responses",‎core.py," instruction = (
+            f'Create a dataset in a CSV format with each field enclosed in double quotes, '
+            f'for a team of agents with the goal: ""{overall_goal}"". '
+            f'Use the delimiter ""{delimiter}"" to separate the fields. '
+            'Include columns ""role"", ""goal"", ""backstory"", ""assigned_task"", ""allow_delegation"". '
+            'Each agent\'s details should be in quotes to avoid confusion with the delimiter. '
+            'Provide a single-word role, individual goal, brief backstory, assigned task, and delegation ability (True/False) for each agent.'
+        )
+instruction_tokens = count_tokens(instruction)","instruction = (
+            f'Create a dataset in a CSV format with each field enclosed in double quotes, '
+            f'for a team of agents. Overall goal for the team is: ""{overall_goal}"". '
+            f'You need to design agents that will work effectively and collaboratively to achieve the team goal successfully. '
+            f'Agents are identified by their role. You must provide each agent in your team the title of their role, their individual goal within the team, their personal backstory and individual skillset, specific details of a task assigned to them which will help ensure the team goal is completed successfully, and whether or not the agent is permitted to delegate certain duties to other agents (True/False). '
+            f'Your CSV must contain the columns ""role"", ""goal"", ""backstory"", ""assigned_task"", ""allow_delegation"". '
+            f'Use the delimiter ""{delimiter}"" to separate the fields. '
+            f'Maintain consistent formatting. Each agent\'s details should be in quotes to avoid confusion with the delimiter. '
+            )
+instruction_tokens = count_tokens(instruction)"
+https://github.com/aibtcdev/ai-agent-crew/commit/7ba8070885becaae166e2fd6315a92c76935f97d,Configuration Bug (CB),Python,Unknown,Incorrect or Missing Parameter Value-Missing Value (IMP.MV),Unknown (UN),CrewAI,"BT:  Superclass not configured correctly
+RC: Superclass missed parameters for constructor
+ET: Not specified",clarity_code_generator_v2.py,"class ClarityCodeGeneratorCrewV2(AIBTC_Crew):
+    def __init__(self):
+        super().__init__(""Clarity Code Generator V2"")","class ClarityCodeGeneratorCrewV2(AIBTC_Crew):
+    def __init__(self, embedder):
+        super().__init__(
+            ""Clarity Code Generator V2"",
+            ""Generate Clarity code for a smart contract on the Stacks blockchain."",
+            embedder,
+        )"
+https://github.com/aibtcdev/ai-agent-crew/commit/e6c341d49362c60f05e1cfea1d6f9149e732bc8c,Configuration Bug (CB),Python,Tools,Incorrect or Missing Parameter Value-Incorrect Value (IMP.IV),Incorrect Output (IO),CrewAI,"BT: get_all_tools incorrectly configured
+RC: allow_delegation parameter incorrectly configured. 
+ET: Tool deligates tasks may generate unexpected tool call, leading to incorrect results",user_chat_specialist.py," tools=AgentTools.get_all_tools(),
+            verbose=True,
+            memory=False,
+            allow_delegation=True,
+            llm=llm,
+        )"," tools=AgentTools.get_all_tools(),
+            verbose=True,
+            memory=False,
+            allow_delegation=False,
+            llm=llm,
+        )"
+https://github.com/aibtcdev/ai-agent-crew/commit/423516adb6e16f060ea65039cce4b1bf9c6ec7d4,Logic Bug (LB),Python,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Crash (CR),CrewAI,"BT:  Incorrect logic of accessing key
+RC: Incorrect flow of for loop
+ET: Throw AttributeError while calling upper method",aibtcdev_utils.py,"for key in settings.items():
+      env_var = f""{section.upper()}_{key.upper()}""","for key, value in settings.items():
+    env_var = f""{section.upper()}_{key.upper()}"""
+https://github.com/startino/aitino/commit/56d01cbcfd018f98450efef0a256cd4b128ce5b1#diff-84b384943d985c07700c0be6a73a54924b92041f9a46fca15bbd80ebf98e8a6eR9-R331,Prompting Bug (PPB),Python,Planning,Incorrect Instruction-Prompt Specification (II.PS),Incorrect Output (IO),CrewAI,"BT:  Issue in the prompt construction
+RC: Prompt not detailed enough
+ET: Does not perform the intended task due to the lack of detailed prompt",crew.py," system_message = f""""""{agent.role}\n\n{agent.system_message}. If you write a program, give the program to the admin. """""""," system_message = f""""""{agent.role}\n\n{agent.system_message}. If you write a program, give the program to the admin. End the message with the agent you want to speak to."""""""
+https://github.com/SCTY-Inc/civic-agentcy/commit/007ed56ae518d2eddfe1a191248893e02a9f4ac6,Reference Bug (RB),Python,Agent Core,Requirement Violation (RV),Crash (CR),CrewAI,"BT:  Incorrect reference of Ollama
+RC: Used code of older version
+ET: Should generate ImportError",browser_tools.py,from langchain.llms import Ollama,from langchain_community.llms import Ollama
+https://github.com/luandev/ComfyUI-CrewAI/commit/c432e8411de9c4a82a86fe46023e51bfe9777f43#diff-a35d93ade18ed3fa022ab4034986dfeececd868db0be901bd11a02d31a89fe28R39,Configuration Bug (CB),Python,Agent Core,Incorrect or Missing Parameter Value-Missing Value (IMP.MV),Incorrect Output (IO),CrewAI,"BT:  Task parameter misconfigured
+RC: output_json not passed 
+ET: The will not  follow the structure",task_node.py," task = Task(
+            description=description,
+            expected_output=expected_output,
+            agent=agent
+        )"," task = Task(
+            description=description,
+            expected_output=expected_output,
+            output_json=PromptOutput,
+            agent=agent
+        )"
+https://github.com/startino/aitino/commit/5c3741307867f127f4445a3065c8ac8cf90bcb27,Prompting Bug (PPB),Python,Agent Core,Incorrect Instruction-Prompt Specification (II.PS),Incorrect Output (IO),CrewAI,"BT:  Issue in the prompt construction
+RC: Prompt not detailed enough
+ET: Does not perform the intended task due to the lack of detailed prompt",crew.py,"agent_instance.update_system_message(
+                    f""""""{agent.title}\n\n{agent.system_message}. Write TERMINATE if all tasks has been solved at full satisfaction. If you instead require more information write TERMINATE along with a list of items of information you need. Otherwise, reply CONTINUE, or the reason why the tasks are not solved yet."""""")","agent_instance.update_system_message(
+                    system_message
+                    + ""\nWrite TERMINATE if all tasks has been solved at full satisfaction. If you instead require more information write TERMINATE along with a list of items of information you need. Otherwise, reply CONTINUE, or the reason why the tasks are not solved yet.""
+                    """"
+                )"
+https://github.com/startino/aitino/commit/849d313412c524b98951bb1906536666dd9c7901,Logic Bug (LB),Javascript,Agent Core,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Crash (CR),CrewAI,"BT: Incorrectly accessed agents variable
+RC: Logical flow incorrect for parameter
+ET: Throw TypeError",AgentLibrary.svelte,$: filteredAgents = filterAgents(agents);,$: filteredAgents = filterAgents($agents);
+https://github.com/StuartRiffle/ragtag-tiger/commit/769e495a9bd88ab05e7dba7586aef981fb662753,Logic Bug (LB),Python,Unknown,Incorrect or Missing Control Flow-Missing Flow (IMCF.MF),Unknown (UN),LlamaIndex,"BT: Logical check not added
+RC: No check added if archives is null
+ET: Not specified",ragtag-tiger.py,"for arch in archives:
+    if arch in containers:
+          containers.remove(arch)","if archives:
+   lograg_verbose(f""Ignoring {len(archives)} archive files..."")
+   for arch in archives:
+         if arch in containers:
+              containers.remove(arch)"
+https://github.com/StuartRiffle/ragtag-tiger/commit/769e495a9bd88ab05e7dba7586aef981fb662753#diff-87cec72704777153ebce2d34314ebcecf7e16e8d4cfd36dde6218f7379d804bfL274-L289,Logic Bug (LB),Python,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Unknown (UN),LlamaIndex,"BT:  Indentation logic incorrect
+RC: Code written in incorrect logical block
+ET: Not specified",ragtag-tiger.py,"         for container in containers:
+                if not temp_folder:
+                    try:
+                        temp_folder = cleanpath(tempfile.mkdtemp())
+                        lograg_verbose(f""Temporary files will be stored in \""{temp_folder}\"""")
+                        lograg(f""Unpacking {len(containers)} containers..."")
+                    except Exception as e:
+                        lograg_error(f""failed creating temporary folder, can't unpack containers: {e}"")
+                        break
+
+            if temp_folder:
+                unpacked_files = unpack_container_to_temp(container, temp_folder)
+                all_unpacked_files.extend(unpacked_files)
+                if temp_folder:","         for container in containers:
+                if not temp_folder:
+                    try:
+                        temp_folder = cleanpath(tempfile.mkdtemp())
+                        lograg_verbose(f""Temporary files will be stored in \""{temp_folder}\"""")
+                        lograg(f""Unpacking {len(containers)} containers..."")
+                    except Exception as e:
+                        lograg_error(f""failed creating temporary folder, can't unpack containers: {e}"")
+                        break
+
+                   if temp_folder:
+                        unpacked_files = unpack_container_to_temp(container, temp_folder)
+                        all_unpacked_files.extend(unpacked_files)
+                        if temp_folder:"
+https://github.com/fcogithub/LlamaIndex/commit/5497725caa0769cc3973fc20cab5d2d49dd208ca,Logic Bug (LB),Python,Tools,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Unknown (UN),LlamaIndex,"BT: Logical condition check incorrect
+RC: Incorrect logical condition
+ET: Not specified",interface.py,"if node.ref_doc_id is not None:
+                   
+         node.metadata.update(
+                            doc_id_to_document[node.ref_doc_id].metadata
+                        )","if (node.ref_doc_id is not None
+                        and node.ref_doc_id in doc_id_to_document):
+                        node.metadata.update(
+                            doc_id_to_document[node.ref_doc_id].metadata
+                        )"
+https://github.com/chenjiayi8/LlamaDocIndexer/commit/1c99d9cec22c236866c2fc334265b615378b244c,Logic Bug (LB),Python,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Crash (CR),LlamaIndex,"BT: Empty text checking condition incorrectly implemented.
+RC: Flow for emty text incorrectly handled
+ET: Throws ValueError for empty file",indexer.py,"if text is None:
+     raise ValueError(""Cannot read text from "" + file)","if text is None or len(text) == 0:
+                    del self.indices[""menu""][path_hash]
+                    continue"
+https://github.com/mihir2921/LlamaIndex_IN_CML_AMP/commit/64f032e30428c0d3fd464be877f58ebb15d3cddc,Argument Bug (AB),Python,Tools,API Misuse-Invalid API Arguments (AM.IAA),Crash (CR),LlamaIndex,"BT: Incorrect argument passed in the third parameter
+RC: llm.ingest got incorrect arguement
+ET: Throws TypeError",front_end_app.py,"return llm.ingest(files, questions, progress)","return llm.ingest(files, questions, collection_name, progress)"
+https://github.com/fcogithub/LlamaIndex/commit/18cf9be0e6fa2f09218bbe8e61f0e31008be69e9,Prompting Bug (PPB),Python,Agent Core,Incorrect Instruction-Prompt Orchestration (II.PO),Incorrect Output (IO),LlamaIndex,"BT:  Issue in the prompt
+RC: Prompt assigned to incorrect role
+ET: Incorrect role of the prompt may lead to incorrect output",condense_plus_context.py,"system_message = ChatMessage(
+            content=system_message_content, role=MessageRole.SYSTEM
+        )","system_message = ChatMessage(
+            content=system_message_content, role=self._llm.metadata.system_role
+        )"
+https://github.com/TinhHoaSolutions-EzHR/chatbot/commit/cd0f4edc561e9c6fa3a1db6af6cfd59fe214397b,Logic Bug (LB),Python,Tools,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Unknown (UN),LlamaIndex,"BT:  Incorrect logic to get the value
+RC: API passed two values, received one through tuple
+ET: Not specified",chat.py,"err = ChatService(db_session=db_session).update_chat_session(chat_session_id=chat_session_id, chat_session_request=chat_session_request, user_id=user.id
+    )
+    if err:
+        status_code, detail = err.kind
+        raise HTTPException(status_code=status_code, detail=detail)","chat_session, err = ChatService(db_session=db_session).update_chat_session(chat_session_id=chat_session_id, chat_session_request=chat_session_request, user_id=user.id
+    )
+    if err:
+        status_code, detail = err.kind
+        raise HTTPException(status_code=status_code, detail=detail)"
+https://github.com/USP-Open-Code/icmc-open-chatbot/commit/3f30d169ea9d08bf8ca40d3c6ffa18a80ac7d0a0,Argument Bug (AB),Python,Tools,Incorrect or Missing Parameter Value-Missing Value (IMP.MV),Tool Ignored (TI),LlamaIndex,"BT: Optional argument not passed
+RC: Required parameters not passed
+ET: Tool was not called (mentioned in the commit)",nodes.py,"        self.tools = {""retriever"": ChromaDB().retrieve}"," self.tools = {
+            ""retriever"": ChromaDB().retrieve,
+            ""most_recent_files"": ChromaDB().get_most_recent
+        }"
+https://github.com/mt7180/quaigle/commit/c29f047546876af0812cc4f06adf7a09048058f0,Logic Bug (LB),Python,Tools,API Misuse-Wrong API Context (AM.WAC),Incorrect Output (IO),LlamaIndex,"BT:  Incorrect module used for specific task
+RC: Incorrect understanding of the functionality of PDFReader
+ET: Only reads pdf and returns the content instead of other files",script.py,"loader = PDFReader()
+        return loader.load_data(
+            file=pathlib.Path(str(AITextDocument.cfd / identifier))
+        )[0]","return SimpleDirectoryReader(
+            input_files=[pathlib.Path(str(AITextDocument.cfd / identifier))]
+        ).load_data()[0]"
+https://github.com/fcogithub/LlamaIndex/commit/b18b7600ebb319a11297a74667ad07aa2fb38a61,Reference Bug (RB),Python,Agent Core,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Crash (CR),LlamaIndex,"BT:  Incorrect reference of the module
+RC: Incorrectly flow of import 
+ET: Throws ImportError",base.py,from mistralai.client import ChatMessage as mistral_chatmessage,from mistralai.models.chat_completion import ChatMessage as mistral_chatmessage
+https://github.com/fcogithub/LlamaIndex/commit/48e0a267335489358844c722bac768f12e88bbb8,Reference Bug (RB),Python,Agent Core,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Crash (CR),LlamaIndex,"BT:  Incorrect reference of the module
+RC: Incorrectly flow of import 
+ET: Throws ImportError",base.py,"from pydantic import BaseModel, Field",
+https://github.com/docprompt/Docprompt/commit/a799c104ecdcf371aa669b2a7698a22f74f1bbaf,Argument Bug (AB),Python,Tools,API Misuse-Invalid API Arguments (AM.IAA),Crash (CR),LlamaIndex,"BT: Wrong parameter type
+RC: Incorrect argument type passed
+ET: Throw TypeError",base.py," results = self.process_document_pages(
+            document_node.document,
+            task_input=task_input,
+            start=start,
+            stop=stop,
+            **kwargs,
+        )"," results = self.process_document_pages(
+            document_node,
+            task_input=task_input,
+            start=start,
+            stop=stop,
+            **kwargs,
+        )"
+https://github.com/mihir2921/LlamaIndex_IN_CML_AMP/commit/b161cbea4ed9b258dc86c0949f18e712caf7f0fa,Logic Bug (LB),Python,Memory,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Crash (CR),LlamaIndex,"BT:  Incorrect logic to get streaming output
+RC: Incorrectly flow for getting streaming message
+ET: Should throw TypeError for None type",front_end_app.py,"def conversation(msg, history):
+    llm.infer(msg, history)","def conversation(msg, history):
+    yield llm.infer(msg, history)"
+https://github.com/bentoml/rag-tutorials/commit/338178b6a58bc23db024671242b8cd403bc53f86,Logic Bug (LB),Python,Memory,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Crash (CR),LlamaIndex,"BT:  Incorrect logic of returning single value
+RC: Incorrect flow of passing single object instead of list
+ET: Throw TypeError later for passing single value instead of list",embedding.py,"async def _aget_query_embedding(self, query: str):
+        res = await self.async_client(query)
+        return res[0]
+def _get_query_embedding(self, query: str):
+        return self.sync_client(query)[0]","async def _aget_query_embedding(self, query: str):
+        res = await self.async_client(query)
+        return res[0].tolist()
+def _get_query_embedding(self, query: str):
+        return self.sync_client(query)[0].tolist()"
+https://github.com/alexleventer/hello-llamaindex-astra/commit/b6900359b46cde64585d8ebd9afbe6875e0be998,API Bug (APIB),Python,Agent Core,Requirement Violation (RV),Incorrect Output (IO),LlamaIndex,"BT:  Code works for previous API version
+RC: Old version code of llama_index
+ET: Prints object instead of output (string)",app.py,"response = query_store('What sort of experiments did Galileo conduct?')
+print(response)
+","answer = query_store('What sort of experiments did Galileo conduct?')
+print(answer.response)"
+https://github.com/datastax/ai-chatbot-starter/commit/e101fbd4ce0cf72f330f747fe2e38f938a66029d,Configuration Bug (CB),Python,Unknown,Incorrect or Missing Parameter Value-Incorrect Value (IMP.IV),Crash (CR),LlamaIndex,"BT: load_test_request configured with local file path
+RC: load_test_request got incorrect value to read 
+ET: Throw FileNotFound error",test_app.py,"def standard_request():
+    return load_test_request(""test_request.json"")","def standard_request():
+    return load_test_request(os.path.join(""tests"", ""test_request.json""))"
+https://github.com/datastax/ai-chatbot-starter/commit/e101fbd4ce0cf72f330f747fe2e38f938a66029d,Logic Bug (LB),Python,Unknown,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Crash (CR),LlamaIndex,"BT: Incorrect logic to read file with incomplete path
+RC: Read local file from different location
+ET: Throw FileNotFound error",test_app.py,"with open(""test_questions.txt"", ""r"") as file:","with open(os.path.join(""tests"", ""test_questions.txt""), ""r"") as file:"
+https://github.com/StuartRiffle/ragtag-tiger/commit/6fdb94ebbbd8ffd97211675e03e95f3b13650817,Configuration Bug (CB),Python,Tools,Incorrect or Missing Parameter Value-Missing Value (IMP.MV),Unknown (UN),LlamaIndex,"BT: ServiceContext.from_defaults parameter misconfigured
+RC: Passed with default llm value
+ET: Not specified",ragtag-tiger.py," local_service_context = ServiceContext.from_defaults(embed_model=""local"")","local_service_context = ServiceContext.from_defaults(llm=None, embed_model=""local"")"
+https://github.com/fcogithub/LlamaIndex/commit/2f86debfa7153f32856dd8960d32893099b33ae2,Initialization Bug (IB),Python,Agent Core,Incorrect or Missing Control Flow-Incorrect Flow (IMCF.IF),Crash (CR),LlamaIndex,"BT: image_content initialization incorrect
+RC: Incorrect way of accessing image_url
+ET: Throw KeyError",openai_utils.py,"image_content = {
+                ""type"": ""image_url"",
+                ""image_url"": image_document.metadata[""image_url""],
+            }","image_content = {
+                ""type"": ""image_url"",
+                ""image_url"": image_document.image_url,
+            }"
