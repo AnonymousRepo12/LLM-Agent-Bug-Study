@@ -22,4 +22,3 @@ _python run_agent.py_
 - Make sure Redis is running before starting the agent.
 - All required Python packages are listed in `requirements.txt`.
 
-The analysis of the dataset is present in the [anonymous site](https://sites.google.com/view/bugsinllmagents)
